@@ -1,15 +1,38 @@
-Coloca las imágenes en esta carpeta `docs/assets/` con los siguientes nombres recomendados:
+# Imágenes de la Documentación
 
-- dashboard.png         -> Vista principal (hero preview en Introducción). Recomendado: 1280x720 o 1024x600
-- ticket-list.png       -> Lista de tickets (sección Capturas). Recomendado: 1200x600
-- ticket-detail.png     -> Detalle de ticket (sección Capturas). Recomendado: 1000x600
-- db-schema.png         -> Diagrama ER / esquema (sección Base de datos). Recomendado: 1200x800
-- api-example-req.png   -> Ejemplo de request (opcional). Recomendado: 800x400
-- api-example-resp.png  -> Ejemplo de response (opcional). Recomendado: 800x400
-- logo-placeholder.png  -> Logo pequeño para la sidebar (36x36)
+Coloca las imágenes en esta carpeta `docs/assets/` con los siguientes nombres exactos:
 
-Cómo añadir las imágenes:
-1. Guarda los ficheros con los nombres exactos listados arriba en `docs/assets/`.
-2. Refresca la página `http://localhost/sistema-tickets/docs/` para verlas.
+## Archivos necesarios
 
-Si quieres nombres distintos, dime los nuevos nombres y actualizo las rutas en `index.html`.
+| Nombre | Sección | Recomendado |
+|--------|---------|------------|
+| **Login.png** | Pantalla de login / autenticación | 1024x720 |
+| **User.png** | Panel de usuario / dashboard | 1024x720 |
+| **Ticket_list.png** | Vista de lista de tickets | 1200x600 |
+| **Ticket_detail.png** | Vista de detalle de un ticket | 1000x600 |
+| **Agentes.png** | Módulo de agentes / panel de agentes | 1024x720 |
+| **Administrador.png** | Módulo de administrador / panel administrativo | 1024x720 |
+
+## Instrucciones de instalación
+
+1. Captura o exporta las pantallas de tu aplicación.
+2. Guarda los archivos con los nombres **exactos** listados en la tabla anterior.
+3. Coloca todos los archivos en esta carpeta: `docs/assets/`
+4. Refresca la página: `http://localhost/sistema-tickets/docs/`
+5. Las imágenes se mostrarán automáticamente en sus respectivas secciones.
+
+## Recomendaciones
+
+- **Formato:** PNG (recomendado) o JPG/JPEG
+- **Resolución:** 1024x720 o superior (HD mínimo)
+- **Compresión:** Optimiza los archivos para carga rápida (máx 2-3 MB c/u)
+- **Contenido:** Capturas claras sin información sensible (usuarios, datos reales, etc.)
+
+## ¿Dónde se muestran las imágenes?
+
+- **Login.png** → Sección "Autenticación / Login"
+- **User.png** → Sección "Panel de Usuario" (hero preview e introducción)
+- **Ticket_list.png** → Sección "Capturas de pantalla"
+- **Ticket_detail.png** → Sección "Capturas de pantalla"
+- **Agentes.png** → Sección "Módulos y Roles" (subsección Agentes)
+- **Administrador.png** → Sección "Módulos y Roles" (subsección Administrador)

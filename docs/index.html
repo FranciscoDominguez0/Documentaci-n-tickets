@@ -29,6 +29,11 @@
         <a href="#intro" class="active">Introducción</a>
         <a href="#instalacion">Instalación</a>
         <a href="#guia">Guía rápida</a>
+        <a href="#autenticacion">Autenticación</a>
+        <a href="#registro">Registro</a>
+        <a href="#panel-usuario">Panel Usuario</a>
+        <a href="#recuperar-pwd">Recuperar Contraseña</a>
+        <a href="#tareas-tickets">Tareas / Tickets</a>
         <a href="#api">API / Endpoints</a>
         <a href="#db">Base de datos</a>
         <a href="#capturas">Capturas</a>
@@ -48,7 +53,7 @@
           <h2>Visión general</h2>
           <p>Este sistema gestiona la creación, seguimiento y resolución de tickets de soporte interno.</p>
           <div class="hero-preview">
-            <img src="assets/dashboard.png" alt="Dashboard" />
+            <img src="assets/Dashboard.png" alt="Dashboard" />
           </div>
         </section>
 
@@ -135,9 +140,14 @@ CREATE TABLE tickets (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, title VARC
 </code></pre>
           </article>
 
-          <article class="module">
-            <h3>Módulo: Agente</h3>
-            <p><strong>Propósito:</strong> Personal de soporte que gestiona y resuelve tickets.</p>
+          <article class="module module-with-image">
+            <div class="module-header">
+              <div>
+                <h3>Módulo: Agente</h3>
+                <p><strong>Propósito:</strong> Personal de soporte que gestiona y resuelve tickets.</p>
+              </div>
+              <img src="assets/Agentes.png" alt="Módulo Agentes" class="module-image" />
+            </div>
             <h4>Funciones principales</h4>
             <ul>
               <li>Ver lista de tickets asignados y pendientes (cola).</li>
@@ -169,9 +179,14 @@ POST /api/tickets/{id}/assign   # reasignar (admin/agent con permiso)
 </code></pre>
           </article>
 
-          <article class="module">
-            <h3>Modulo: Administrador</h3>
-            <p><strong>Propósito:</strong> Gestión completa del sistema: usuarios, agentes, configuraciones, reportes y asignaciones.</p>
+          <article class="module module-with-image">
+            <div class="module-header">
+              <div>
+                <h3>Módulo: Administrador</h3>
+                <p><strong>Propósito:</strong> Gestión completa del sistema: usuarios, agentes, configuraciones, reportes y asignaciones.</p>
+              </div>
+              <img src="assets/Administrador.png" alt="Módulo Administrador" class="module-image" />
+            </div>
             <h4>Funciones principales</h4>
             <ul>
               <li>Crear/editar/eliminar usuarios y agentes.</li>
@@ -216,6 +231,243 @@ CREATE TABLE user_roles (user_id INT, role_id INT);
           <p>Adapta los endpoints y permisos a tu implementación concreta. Puedo generar migraciones SQL completas y ejemplos de requests/responses si quieres.</p>
         </section>
 
+        <section id="autenticacion" class="panel with-image">
+          <div class="panel-header">
+            <div class="panel-content">
+              <h2>Autenticación / Login</h2>
+              <p>Proceso para que usuarios y agentes accedan al sistema con sus credenciales.</p>
+            </div>
+            <img src="assets/Login.png" alt="Pantalla Login" class="side-image" />
+          </div>
+          <h4>Flujo de Login</h4>
+          <ol>
+            <li>Usuario ingresa <code>email</code> y <code>contraseña</code> en la pantalla de login.</li>
+            <li>El sistema verifica las credenciales contra la tabla <code>users</code>.</li>
+            <li>Si es válido, se genera un token de sesión (JWT o sesión PHP).</li>
+            <li>Se redirige hacia el panel según el rol: usuario → <code>/dashboard</code>, agente → <code>/agent/tickets</code>, admin → <code>/admin</code>.</li>
+          </ol>
+          <h4>Vista/Pantalla de Login</h4>
+          <ul>
+            <li>Formulario con campos: email, contraseña.</li>
+            <li>Botón "Iniciar sesión".</li>
+            <li>Enlace "Olvidé mi contraseña" → va a <code>#recuperar-pwd</code>.</li>
+            <li>Enlace "Crear cuenta" → va a <code>#registro</code>.</li>
+          </ul>
+          <h4>Endpoint</h4>
+          <pre><code>POST /api/auth/login
++Content-Type: application/json
++
++{
++  "email": "usuario@example.com",
++  "password": "contraseña123"
++}
++
++Response (200 OK):
++{
++  "success": true,
++  "user": {
++    "id": 1,
++    "name": "Juan Pérez",
++    "email": "usuario@example.com",
++    "role": "user"
++  },
++  "token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
++}
++</code></pre>
++          <h4>Validaciones</h4>
++          <ul>
++            <li>Email vacío o formato inválido → error 400.</li>
++            <li>Contraseña incorrecta → error 401.</li>
++            <li>Usuario no existe → error 404 (o 401 por seguridad).</li>
++            <li>Usuario desactivado → error 403.</li>
++          </ul>
++        </section>
++
++        <section id="registro" class="panel">
++          <h2>Registro / Sign Up</h2>
++          <p>Permite que nuevos usuarios se registren en el sistema (si está habilitado públicamente).</p>
++          <h4>Flujo de Registro</h4>
++          <ol>
++            <li>Usuario hace clic en "Crear cuenta" desde la pantalla de login.</li>
++            <li>Completa formulario: nombre, email, contraseña, confirmación contraseña.</li>
++            <li>Opcionalmente, puede ingresar empresa/departamento (según la configuración).</li>
++            <li>Se envía un email de confirmación con un enlace de verificación.</li>
++            <li>Usuario confirma email y accede al sistema (con rol <code>user</code> por defecto).</li>
++          </ol>
++          <h4>Vista/Pantalla de Registro</h4>
++          <ul>
++            <li>Campos: nombre, email, contraseña, confirmar contraseña.</li>
++            <li>Checkbox: aceptar términos y condiciones.</li>
++            <li>Botón "Registrarse".</li>
++            <li>Enlace "Ya tengo cuenta" → vuelve a login.</li>
++          </ul>
++          <h4>Endpoint</h4>
++          <pre><code>POST /api/auth/register
++Content-Type: application/json
++
++{
++  "name": "Juan Pérez",
++  "email": "usuario@example.com",
++  "password": "contraseña123",
++  "password_confirm": "contraseña123"
++}
++
++Response (201 Created):
++{
++  "success": true,
++  "message": "Usuario registrado. Por favor confirma tu email.",
++  "user_id": 2
++}
++</code></pre>
++          <h4>Validaciones</h4>
++          <ul>
++            <li>Email ya existe → error 409 (conflict).</li>
++            <li>Contraseña débil (&lt;8 caracteres, sin números) → error 400.</li>
++            <li>Contraseñas no coinciden → error 400.</li>
++          </ul>
++        </section>
++
++        <section id="panel-usuario" class="panel">
++          <h2>Panel de Usuario</h2>
++          <p>Interfaz principal para usuarios después de iniciar sesión. Accesible en <code>/dashboard</code> o <code>/user/home</code>.</p>
++          <h4>Componentes / Vistas</h4>
++          <ul>
++            <li><strong>Resumen (Overview):</strong> contador de tickets abiertos, en progreso, cerrados; próximas vencidas.</li>
++            <li><strong>Lista de mis tickets:</strong> tabla con columnas: ID, Título, Estado, Prioridad, Fecha, Última actualización.</li>
++            <li><strong>Filtros:</strong> por estado (abierto, en progreso, cerrado), prioridad, fecha.</li>
++            <li><strong>Botón "Crear ticket":</strong> abre formulario para crear un nuevo ticket.</li>
++            <li><strong>Perfil / Configuración:</strong> editar nombre, email, cambiar contraseña, preferencias.</li>
++          </ul>
++          <h4>Acciones disponibles</h4>
++          <ol>
++            <li>Ver detalle de un ticket (descripción, comentarios, historial).</li>
++            <li>Agregar comentario a un ticket abierto.</li>
++            <li>Cerrar un ticket (si el estado lo permite).</li>
++            <li>Descargar adjuntos del ticket.</li>
++          </ol>
++          <h4>Endpoints</h4>
++          <pre><code>GET  /api/user/dashboard
++GET  /api/user/tickets
++GET  /api/user/tickets/{id}
++POST /api/user/tickets
++</code></pre>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="assets/User.png" alt="Vista Panel Usuario" />
+              <figcaption>Panel de Usuario</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="assets/Ticket_list.png" alt="Lista de Tickets" />
+              <figcaption>Lista de Tickets</figcaption>
+            </figure>
+          </div>
++        </section>
++
++        <section id="recuperar-pwd" class="panel">
++          <h2>Recuperar Contraseña</h2>
++          <p>Flujo para que usuarios que olvidaron su contraseña la restablezcan.</p>
++          <h4>Flujo paso a paso</h4>
++          <ol>
++            <li><strong>Paso 1 (Solicitud):</strong> Usuario ingresa email en la página "Olvidé mi contraseña".</li>
++            <li><strong>Paso 2 (Email):</strong> Se envía email con enlace temporal que incluye token válido por 24h (ej: <code>/reset-password?token=abc123xyz</code>).</li>
++            <li><strong>Paso 3 (Entrada):</strong> Usuario hace clic en el enlace, accede a página con campos: nueva contraseña, confirmar contraseña.</li>
++            <li><strong>Paso 4 (Confirmación):</strong> Se valida el token y se actualiza la contraseña. Mensaje de éxito y redirección a login.</li>
++          </ol>
++          <h4>Endpoints</h4>
++          <pre><code>POST /api/auth/forgot-password
++{
++  "email": "usuario@example.com"
++}
++Response: { "message": "Email enviado con instrucciones" }
++
++POST /api/auth/reset-password
++{
++  "token": "abc123xyz...",
++  "password": "nueva_contraseña",
++  "password_confirm": "nueva_contraseña"
++}
++Response: { "success": true, "message": "Contraseña actualizada" }
++</code></pre>
++          <h4>Validaciones de seguridad</h4>
++          <ul>
++            <li>Token expirado → error 410 (gone).</li>
++            <li>Token inválido → error 401.</li>
++            <li>Email no existe → no revelar (respuesta genérica: "Si el email existe, enviaremos instrucciones").</li>
++            <li>Contraseña débil → error 400.</li>
++          </ul>
++        </section>
++
++        <section id="tareas-tickets" class="panel">
++          <h2>Tareas / Crear y Gestionar Tickets</h2>
++          <p>Explicación completa de cómo usuarios crean tickets y los gestionan durante su ciclo de vida.</p>
++          <h4>Crear un Ticket</h4>
++          <h5>Formulario</h5>
++          <ul>
++            <li><strong>Título:</strong> asunto principal (requerido, 10-200 caracteres).</li>
++            <li><strong>Descripción:</strong> detalles del problema o solicitud (requerido, mínimo 20 caracteres).</li>
++            <li><strong>Categoría:</strong> dropdown para seleccionar (soporte, facturación, técnico, otro).</li>
++            <li><strong>Prioridad:</strong> baja, media, alta, urgente (por defecto: media).</li>
++            <li><strong>Adjuntos:</strong> opcionalmente cargar archivos (máx 5 archivos, 10 MB c/u).</li>
++          </ul>
++          <h5>Endpoint</h5>
++          <pre><code>POST /api/tickets
++Content-Type: multipart/form-data
++
++{
++  "title": "No puedo acceder a mi cuenta",
++  "description": "Olvidé mi contraseña y no recibí el email de recuperación...",
++  "category": "soporte",
++  "priority": "high",
++  "attachments": [archivo1.pdf, archivo2.jpg]
++}
++
++Response (201):
++{
++  "success": true,
++  "ticket": {
++    "id": 42,
++    "user_id": 1,
++    "title": "No puedo acceder a mi cuenta",
++    "status": "new",
++    "created_at": "2026-02-08T10:30:00Z"
++  }
++}
++</code></pre>
++          <h4>Estados del Ticket</h4>
++          <table>
++            <thead><tr><th>Estado</th><th>Descripción</th><th>Usuario puede cerrar</th></tr></thead>
++            <tbody>
++              <tr><td>Nuevo</td><td>Acaba de ser creado, en espera de asignación.</td><td>Sí</td></tr>
++              <tr><td>Asignado</td><td>Un agente lo ha reclamado.</td><td>No</td></tr>
++              <tr><td>En progreso</td><td>Se está trabajando en la solución.</td><td>No</td></tr>
++              <tr><td>En espera</td><td>Requiere información adicional del usuario.</td><td>No</td></tr>
++              <tr><td>Resuelto</td><td>Se proporcionó una solución.</td><td>Sí (confirmar cierre)</td></tr>
++              <tr><td>Cerrado</td><td>Ticket cerrado, no se pueden agregar más respuestas.</td><td>-</td></tr>
++            </tbody>
++          </table>
++          <h4>Ciclo de vida del Ticket</h4>
++          <ol>
++            <li><strong>Creación:</strong> usuario → estado "Nuevo", sin asignar.</li>
++            <li><strong>Asignación:</strong> admin/agente reclama → estado "Asignado", campo <code>assigned_to</code> se completa.</li>
++            <li><strong>Respuestas:</strong> agente responde y cambia a "En progreso".</li>
++            <li><strong>Espera:</strong> si necesita info del usuario, estado "En espera".</li>
++            <li><strong>Resolución:</strong> agente marca como "Resuelto".</li>
++            <li><strong>Cierre:</strong> usuario confirma o agente cierra automáticamente después de X días.</li>
++          </ol>
++          <h4>Interacción Usuario-Agente</h4>
++          <ul>
++            <li>El usuario ve comentarios públicos (respuestas del agente).</li>
++            <li>El usuario puede responder a cada comentario del agente.</li>
++            <li>Las notas internas (solo agentes) no son visibles para el usuario.</li>
++            <li>Cuando el agente responde, se envía notificación por email al usuario.</li>
++          </ul>
++          <h4>Endpoints adicionales</h4>
++          <pre><code>GET  /api/tickets/{id}
++POST /api/tickets/{id}/comments
++PUT  /api/tickets/{id}/status
++</code></pre>
++        </section>
+
         <section id="api" class="panel">
           <h2>API / Endpoints</h2>
           <p>Ejemplos de uso con JSON.</p>
@@ -256,9 +508,15 @@ CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARC
             <li><code>ticket-list.png</code> — lista de tickets</li>
             <li><code>ticket-detail.png</code> — detalle</li>
           </ul>
-          <div class="gallery">
-            <img src="assets/ticket-list.png" alt="Lista tickets" />
-            <img src="assets/ticket-detail.png" alt="Detalle ticket" />
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="assets/Ticket_list.png" alt="Lista tickets" />
+              <figcaption>Listado de Tickets</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="assets/Ticket_detail.png" alt="Detalle ticket" />
+              <figcaption>Detalle de Ticket</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -285,6 +543,11 @@ CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARC
           <li><a href="#intro">Introducción</a></li>
           <li><a href="#instalacion">Instalación</a></li>
           <li><a href="#guia">Guía rápida</a></li>
+          <li><a href="#autenticacion">Autenticación</a></li>
+          <li><a href="#registro">Registro</a></li>
+          <li><a href="#panel-usuario">Panel Usuario</a></li>
+          <li><a href="#recuperar-pwd">Recuperar Contraseña</a></li>
+          <li><a href="#tareas-tickets">Tareas / Tickets</a></li>
           <li><a href="#api">API</a></li>
           <li><a href="#db">Base de datos</a></li>
           <li><a href="#capturas">Capturas</a></li>

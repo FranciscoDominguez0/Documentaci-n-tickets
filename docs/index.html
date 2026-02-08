@@ -157,178 +157,232 @@
           </table>
         </section>
 
-        <section id="instalacion" class="panel">
+        <section id="instalacion" class="panel accent-blue">
           <h2>Instalación</h2>
-          <p>Copiar la carpeta `docs` dentro del proyecto en XAMPP o servir la carpeta directamente.</p>
-          <pre><code class="bash">xcopy /E /I "C:\Users\domin\Documenacion-tickets\docs" "C:\xampp81\htdocs\sistema-tickets\docs"
+          <p class="muted">Copia <code>docs/</code> al proyecto y abre la documentación en el navegador.</p>
+
+          <div class="cmd">
+            <div class="cmd-bar">
+              <div class="cmd-title">Comandos (Windows)</div>
+              <div class="labels">
+                <span class="label">XAMPP</span>
+                <span class="label">Local</span>
+              </div>
+            </div>
+            <div class="cmd-body">
+              <pre><code class="bash">xcopy /E /I "C:\Users\domin\Documenacion-tickets\docs" "C:\xampp81\htdocs\sistema-tickets\docs"
 start http://localhost/sistema-tickets/docs/
 </code></pre>
-          <h3>Requisitos</h3>
-          <ul>
-            <li>PHP 8.1 o superior</li>
-            <li>MySQL / MariaDB</li>
-            <li>Composer (opcional)</li>
-          </ul>
-        </section>
-
-        <section id="guia" class="panel">
-          <h2>Guía rápida / Uso</h2>
-          <ol>
-            <li>Configura conexión a la base de datos en <code>config.php</code> o <code>.env</code>.</li>
-            <li>Importa <code>db/schema.sql</code> o ejecuta migraciones.</li>
-            <li>Visita la URL principal, crea un ticket y revisa su historial.</li>
-          </ol>
-          <div class="split">
-            <div>
-              <h4>Rutas importantes</h4>
-              <ul>
-                <li><code>/tickets</code> — Lista</li>
-                <li><code>/tickets/create</code> — Crear</li>
-                <li><code>/tickets/{id}</code> — Detalle</li>
-                <li><code>/api/tickets</code> — API REST</li>
-              </ul>
             </div>
-            <div>
-              <h4>Atajos</h4>
-              <p>Puedes acceder al panel de administración en <code>/admin</code> (si aplica).</p>
+          </div>
+
+          <div class="klist">
+            <div class="kitem">
+              <div class="kleft">
+                <div class="kname">PHP</div>
+                <div class="kdesc">Versión 8.1 o superior</div>
+              </div>
+              <span class="label">Requisito</span>
+            </div>
+            <div class="kitem">
+              <div class="kleft">
+                <div class="kname">MySQL / MariaDB</div>
+                <div class="kdesc">Base de datos</div>
+              </div>
+              <span class="label">Requisito</span>
+            </div>
+            <div class="kitem">
+              <div class="kleft">
+                <div class="kname">Composer</div>
+                <div class="kdesc">Opcional</div>
+              </div>
+              <span class="label">Opcional</span>
             </div>
           </div>
         </section>
 
-        <section id="modules" class="panel">
-          <h2>Módulos y Roles</h2>
-          <p>Descripción completa de los módulos principales del sistema: <strong>Usuario</strong>, <strong>Agente</strong> y <strong>Administrador</strong>. Cada subsección indica funciones, creación, asignación, permisos, endpoints y esquema de base de datos mínimo.</p>
+        <section id="guia" class="panel accent-green">
+          <h2>Guía rápida / Uso</h2>
+          <div class="cards">
+            <div class="card"><h4>1) Configura</h4><p>Conexión BD en <code>config.php</code> o <code>.env</code>.</p></div>
+            <div class="card"><h4>2) Importa</h4><p><code>db/schema.sql</code> o migraciones.</p></div>
+            <div class="card"><h4>3) Opera</h4><p>Crea un ticket y revisa su historial.</p></div>
+          </div>
 
-          <article class="module">
-            <h3>Módulo: Usuario</h3>
-            <p><strong>Propósito:</strong> Clientes o usuarios finales que reportan incidencias o solicitudes.</p>
-            <h4>Funciones principales</h4>
-            <ul>
-              <li>Registro / autenticación (registro por email o invitación).</li>
-              <li>Crear ticket: título, descripción, prioridad, adjuntos.</li>
-              <li>Ver y filtrar sus tickets (estado, prioridad, fecha).</li>
-              <li>Comentar en tickets y adjuntar archivos.</li>
-              <li>Cerrar/confirmar resolución (si está permitido).</li>
-            </ul>
-            <h4>Cómo se crea</h4>
-            <p>Un `Usuario` se crea vía:</p>
-            <ul>
-              <li>Formulario de registro público (self-service).</li>
-              <li>Creación por un `Administrador` desde el panel de usuarios.</li>
-            </ul>
-            <h4>Asignación / flujo</h4>
-            <p>Cuando un usuario crea un ticket, el ticket:</p>
-            <ol>
-              <li>Se registra en estado <em>nuevo</em> o <em>abierto</em>.</li>
-              <li>Puede ser encolado automáticamente según categoría/servicio.</li>
-              <li>Queda <strong>sin asignar</strong> hasta que un agente lo reclame o un administrador lo asigne.</li>
-            </ol>
-            <h4>Permisos</h4>
-            <ul>
-              <li>Ver/editar solo sus propios tickets.</li>
-              <li>No puede reasignar ni cambiar roles.</li>
-            </ul>
-            <h4>Endpoints (ejemplos)</h4>
-            <pre><code>POST /api/users         # registrar
-POST /api/tickets       # crear ticket (user_id)
-GET  /api/tickets?user=1  # listar tickets de usuario
-POST /api/tickets/{id}/comments  # añadir comentario
-</code></pre>
-            <h4>Esquema mínimo (ejemplos)</h4>
-            <pre><code class="sql">CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(150) UNIQUE, password VARCHAR(255), role VARCHAR(20), created_at DATETIME);
-CREATE TABLE tickets (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, title VARCHAR(200), description TEXT, status VARCHAR(30), priority VARCHAR(20), assigned_to INT NULL, created_at DATETIME);
-</code></pre>
-          </article>
-
-          <article class="module module-with-image">
-            <div class="module-header">
-              <div>
-                <h3>Módulo: Agente</h3>
-                <p><strong>Propósito:</strong> Personal de soporte que gestiona y resuelve tickets.</p>
-              </div>
-              <img src="assets/Agentes.png" alt="Módulo Agentes" class="module-image" />
-            </div>
-            <h4>Funciones principales</h4>
-            <ul>
-              <li>Ver lista de tickets asignados y pendientes (cola).</li>
-              <li>Reclamar (claim) tickets sin asignar.</li>
-              <li>Responder al usuario, agregar notas internas y cambiar estado.</li>
-              <li>Reasignar tickets a otros agentes o escalar a administrador.</li>
-              <li>Marcar prioridades y adjuntar evidencias.</li>
-            </ul>
-            <h4>Cómo se crea</h4>
-            <p>Un `Agente` normalmente es creado por un `Administrador` o provisionado mediante sincronización con un directorio corporativo.</p>
-            <h4>Asignación / flujo</h4>
-            <ol>
-              <li>El administrador puede asignar tickets directamente a un agente.</li>
-              <li>Los agentes pueden ver una cola de tickets no asignados y reclamar los que atienden.</li>
-              <li>Al reclamar, el campo <code>assigned_to</code> se actualiza con el id del agente.</li>
-            </ol>
-            <h4>Permisos</h4>
-            <ul>
-              <li>Ver tickets asignados y tickets públicos de la cola.</li>
-              <li>Modificar estado, agregar comentarios, reasignar.</li>
-              <li>Acceso limitado a paneles administrativos (según rol).</li>
-            </ul>
-            <h4>Endpoints (ejemplos)</h4>
-            <pre><code>GET  /api/tickets?assigned_to={agent_id}
-POST /api/tickets/{id}/claim    # reclamar ticket
-POST /api/tickets/{id}/reply    # respuesta / nota pública
-POST /api/tickets/{id}/internal # nota interna
-POST /api/tickets/{id}/assign   # reasignar (admin/agent con permiso)
-</code></pre>
-          </article>
-
-          <article class="module module-with-image">
-            <div class="module-header">
-              <div>
-                <h3>Módulo: Administrador</h3>
-                <p><strong>Propósito:</strong> Gestión completa del sistema: usuarios, agentes, configuraciones, reportes y asignaciones.</p>
-              </div>
-              <img src="assets/Administrador.png" alt="Módulo Administrador" class="module-image" />
-            </div>
-            <h4>Funciones principales</h4>
-            <ul>
-              <li>Crear/editar/eliminar usuarios y agentes.</li>
-              <li>Asignar tickets a agentes o equipos.</li>
-              <li>Gestionar categorías, prioridades y SLA.</li>
-              <li>Ver reportes, métricas y exportar datos.</li>
-              <li>Configurar integraciones (correo, webhooks, APIs).</li>
-            </ul>
-            <h4>Cómo se crea</h4>
-            <p>El primer `Administrador` suele crearse durante la instalación o mediante una seed; posteriores administradores pueden ser añadidos por usuarios con privilegios.</p>
-            <h4>Asignación / flujo</h4>
-            <p>Los administradores pueden asignar tickets manualmente o configurar reglas automáticas (por categoría, prioridad, horario).</p>
-            <h4>Permisos</h4>
-            <ul>
-              <li>Acceso completo a todos los datos y configuraciones.</li>
-              <li>Puede delegar permisos mediante roles y grupos.</li>
-            </ul>
-            <h4>Endpoints (ejemplos)</h4>
-            <pre><code>GET  /api/admin/users
-POST /api/admin/users      # crear usuario/agent
-PUT  /api/admin/users/{id} # actualizar
-POST /api/admin/tickets/{id}/assign # asignar a agente
-</code></pre>
-            <h4>Tablas y migraciones recomendadas</h4>
-            <pre><code class="sql">CREATE TABLE roles (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50));
-CREATE TABLE user_roles (user_id INT, role_id INT);
--- permisos más finos pueden almacenarse en una tabla permissions
-</code></pre>
-          </article>
-
-          <h4>Matriz de permisos (resumen)</h4>
+          <h3>Rutas</h3>
           <table>
-            <thead><tr><th>Acción</th><th>Usuario</th><th>Agente</th><th>Administrador</th></tr></thead>
+            <thead><tr><th>Ruta</th><th>Uso</th></tr></thead>
             <tbody>
-              <tr><td>Crear ticket</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
-              <tr><td>Ver tickets (todos)</td><td>No</td><td>Solo asignados/cola</td><td>Sí</td></tr>
-              <tr><td>Asignar ticket</td><td>No</td><td>Sí (según permiso)</td><td>Sí</td></tr>
-              <tr><td>Gestionar usuarios</td><td>No</td><td>No</td><td>Sí</td></tr>
+              <tr><td><code>/tickets</code></td><td>Listado</td></tr>
+              <tr><td><code>/tickets/create</code></td><td>Crear ticket</td></tr>
+              <tr><td><code>/tickets/{id}</code></td><td>Detalle</td></tr>
+              <tr><td><code>/api/tickets</code></td><td>API REST</td></tr>
+              <tr><td><code>/admin</code></td><td>Administración (si aplica)</td></tr>
             </tbody>
           </table>
+        </section>
 
-          <p>Adapta los endpoints y permisos a tu implementación concreta. Puedo generar migraciones SQL completas y ejemplos de requests/responses si quieres.</p>
+        <section id="modules" class="panel accent">
+          <h2>Módulos y Roles</h2>
+          <p class="muted">Resumen por rol con funciones, permisos y endpoints clave.</p>
+
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/User.png" alt="Usuario" />
+              <div class="cap">Cliente / Usuario</div>
+            </div>
+            <div class="img-card">
+              <img src="assets/Agentes.png" alt="Agente" />
+              <div class="cap">Agente de soporte</div>
+            </div>
+            <div class="img-card">
+              <img src="assets/Administrador.png" alt="Administrador" />
+              <div class="cap">Administrador</div>
+            </div>
+          </div>
+
+          <div class="cards stack">
+            <div class="card">
+              <h3>Usuario</h3>
+              <p class="muted">Crea y consulta sus tickets.</p>
+              <div class="img-row">
+                <div class="img-card">
+                  <img src="assets/Perfil-user.png" alt="Perfil de usuario" />
+                  <div class="cap">Perfil de usuario</div>
+                </div>
+              </div>
+              <table>
+                <thead><tr><th>Acción</th><th>Disponible</th></tr></thead>
+                <tbody>
+                  <tr><td>Crear ticket</td><td><span class="label status ok">Sí</span></td></tr>
+                  <tr><td>Ver tickets</td><td><span class="label">Propios</span></td></tr>
+                  <tr><td>Comentar</td><td><span class="label status ok">Sí</span></td></tr>
+                </tbody>
+              </table>
+              <div class="tabs" data-tabs>
+                <div class="tab-bar">
+                  <div class="example-meta">
+                    <span class="label method post">POST</span>
+                    <span class="label">/api/tickets</span>
+                  </div>
+                  <div class="tab-buttons" role="tablist" aria-label="Usuario endpoints">
+                    <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="u-req">Request</button>
+                    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="u-resp">Response</button>
+                  </div>
+                </div>
+                <div class="tab-panels">
+                  <div class="tab-panel active" role="tabpanel" data-panel="u-req">
+                    <pre><code class="http">POST /api/tickets
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "Solicitud de soporte",
+  "description": "Detalle del problema...",
+  "priority": "medium"
+}
+</code></pre>
+                  </div>
+                  <div class="tab-panel" role="tabpanel" data-panel="u-resp">
+                    <pre><code class="json">{
+  "success": true,
+  "ticket": { "id": 42, "status": "new" }
+}
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Agente</h3>
+              <p class="muted">Atiende, responde y actualiza estado.</p>
+              <table>
+                <thead><tr><th>Acción</th><th>Disponible</th></tr></thead>
+                <tbody>
+                  <tr><td>Ver cola</td><td><span class="label status ok">Sí</span></td></tr>
+                  <tr><td>Reclamar ticket</td><td><span class="label status ok">Sí</span></td></tr>
+                  <tr><td>Reasignar</td><td><span class="label">Según permiso</span></td></tr>
+                </tbody>
+              </table>
+              <div class="tabs" data-tabs>
+                <div class="tab-bar">
+                  <div class="example-meta">
+                    <span class="label method post">POST</span>
+                    <span class="label">/api/tickets/{id}/claim</span>
+                  </div>
+                  <div class="tab-buttons" role="tablist" aria-label="Agente endpoints">
+                    <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="a-req">Request</button>
+                    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="a-resp">Response</button>
+                  </div>
+                </div>
+                <div class="tab-panels">
+                  <div class="tab-panel active" role="tabpanel" data-panel="a-req">
+                    <pre><code class="http">POST /api/tickets/42/claim
+Accept: application/json
+</code></pre>
+                  </div>
+                  <div class="tab-panel" role="tabpanel" data-panel="a-resp">
+                    <pre><code class="json">{
+  "success": true,
+  "ticket": { "id": 42, "assigned_to": 7 }
+}
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>Administrador</h3>
+              <p class="muted">Configura, asigna y gestiona usuarios.</p>
+              <div class="img-row">
+                <div class="img-card">
+                  <img src="assets/Configuracion-admin.png" alt="Configuración del administrador" />
+                  <div class="cap">Configuración del administrador</div>
+                </div>
+              </div>
+              <table>
+                <thead><tr><th>Acción</th><th>Disponible</th></tr></thead>
+                <tbody>
+                  <tr><td>Gestionar usuarios</td><td><span class="label status ok">Sí</span></td></tr>
+                  <tr><td>Asignar tickets</td><td><span class="label status ok">Sí</span></td></tr>
+                  <tr><td>Organizaciones</td><td><span class="label status ok">Sí</span></td></tr>
+                </tbody>
+              </table>
+              <div class="tabs" data-tabs>
+                <div class="tab-bar">
+                  <div class="example-meta">
+                    <span class="label method post">POST</span>
+                    <span class="label">/api/admin/tickets/{id}/assign</span>
+                  </div>
+                  <div class="tab-buttons" role="tablist" aria-label="Admin endpoints">
+                    <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="ad-req">Request</button>
+                    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="ad-resp">Response</button>
+                  </div>
+                </div>
+                <div class="tab-panels">
+                  <div class="tab-panel active" role="tabpanel" data-panel="ad-req">
+                    <pre><code class="http">POST /api/admin/tickets/42/assign
+Content-Type: application/json
+Accept: application/json
+
+{ "assigned_to": 7 }
+</code></pre>
+                  </div>
+                  <div class="tab-panel" role="tabpanel" data-panel="ad-resp">
+                    <pre><code class="json">{
+  "success": true,
+  "ticket": { "id": 42, "status": "assigned" }
+}
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="muted">Para el detalle de permisos por acción, revisa <a href="#roles">Roles y permisos</a>.</p>
         </section>
 
         <section id="autenticacion" class="panel with-image">

@@ -110,6 +110,19 @@ code{font-family:Consolas,Monaco,ui-monospace,SFMono-Regular,Menlo,monospace}
 .example-meta .label{padding:4px 10px}
 .split{display:flex;gap:20px}
 .split > div{flex:1}
+.cmd{margin-top:12px;border-radius:14px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.015);overflow:hidden}
+.cmd .cmd-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+.cmd .cmd-title{font-weight:800;font-size:13px;color:var(--text)}
+.cmd .cmd-body{padding:12px}
+.klist{display:grid;gap:8px;margin-top:12px}
+.kitem{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02)}
+.kitem .kleft{display:flex;flex-direction:column;gap:4px}
+.kitem .kname{font-weight:800}
+.kitem .kdesc{color:var(--muted);font-size:13px}
+.img-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:14px}
+.img-card{border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);overflow:hidden}
+.img-card img{width:100%;height:clamp(260px, 34vh, 420px);object-fit:contain;display:block;background:rgba(11,18,32,0.7);padding:10px}
+.img-card .cap{padding:10px 12px;color:var(--muted);font-size:13px}
 .db-figure img{width:100%;max-width:640px;border-radius:6px;border:1px solid rgba(255,255,255,0.03)}
 .gallery{display:flex;gap:12px;flex-wrap:wrap}
 .gallery img{width:320px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
@@ -150,6 +163,7 @@ figcaption{margin-top:10px;color:var(--muted);font-size:13px}
 .callout p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+.cards.stack{grid-template-columns:1fr;gap:16px}
 .card{background:rgba(11,18,32,0.7);border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:14px}
 .card h4{margin:0 0 8px;font-size:14px}
 .card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}

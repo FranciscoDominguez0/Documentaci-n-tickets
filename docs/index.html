@@ -1,0 +1,307 @@
+<!doctype html>
+<!--
+  Plantilla de documentación estilo "Doc Site" en tema oscuro.
+  Instrucciones de imágenes: coloca tus imágenes en `docs/assets/` con los nombres listados en `assets/README_images.md`.
+  Nombres recomendados (ejemplos):
+    - dashboard.png         -> se muestra en la sección Introducción
+    - ticket-list.png       -> lista de tickets
+    - ticket-detail.png     -> detalle de ticket
+    - db-schema.png         -> diagrama ER / esquema
+    - api-example-req.png   -> ejemplo de request
+    - api-example-resp.png  -> ejemplo de response
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Documentación — Sistema Tickets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="doc-layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="assets/logo-placeholder.png" alt="Logo" />
+        <h3>Sistema Tickets</h3>
+      </div>
+      <input class="search" placeholder="Buscar..." aria-label="Buscar documentación" />
+      <nav class="nav">
+        <a href="#intro" class="active">Introducción</a>
+        <a href="#instalacion">Instalación</a>
+        <a href="#guia">Guía rápida</a>
+        <a href="#api">API / Endpoints</a>
+        <a href="#db">Base de datos</a>
+        <a href="#capturas">Capturas</a>
+        <a href="#contribuir">Contribuir</a>
+      </nav>
+      <div class="version">v1.0 • 2026</div>
+    </aside>
+
+    <main class="content">
+      <article class="page">
+        <header class="page-header">
+          <h1 id="intro">Introducción</h1>
+          <p class="muted">Breve descripción del propósito del sistema y flujo principal.</p>
+        </header>
+
+        <section class="panel">
+          <h2>Visión general</h2>
+          <p>Este sistema gestiona la creación, seguimiento y resolución de tickets de soporte interno.</p>
+          <div class="hero-preview">
+            <img src="assets/dashboard.png" alt="Dashboard" />
+          </div>
+        </section>
+
+        <section id="instalacion" class="panel">
+          <h2>Instalación</h2>
+          <p>Copiar la carpeta `docs` dentro del proyecto en XAMPP o servir la carpeta directamente.</p>
+          <pre><code class="bash">xcopy /E /I "C:\Users\domin\Documenacion-tickets\docs" "C:\xampp81\htdocs\sistema-tickets\docs"
+start http://localhost/sistema-tickets/docs/
+</code></pre>
+          <h3>Requisitos</h3>
+          <ul>
+            <li>PHP 8.1+</li>
+            <li>MySQL / MariaDB</li>
+            <li>Composer (opcional)</li>
+          </ul>
+        </section>
+
+        <section id="guia" class="panel">
+          <h2>Guía rápida / Uso</h2>
+          <ol>
+            <li>Configura conexión a la base de datos en <code>config.php</code> o <code>.env</code>.</li>
+            <li>Importa <code>db/schema.sql</code> o ejecuta migraciones.</li>
+            <li>Visita la URL principal, crea un ticket y revisa su historial.</li>
+          </ol>
+          <div class="split">
+            <div>
+              <h4>Rutas importantes</h4>
+              <ul>
+                <li><code>/tickets</code> — Lista</li>
+                <li><code>/tickets/create</code> — Crear</li>
+                <li><code>/tickets/{id}</code> — Detalle</li>
+                <li><code>/api/tickets</code> — API REST</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Atajos</h4>
+              <p>Puedes acceder al panel de administración en <code>/admin</code> (si aplica).</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="modules" class="panel">
+          <h2>Módulos y Roles</h2>
+          <p>Descripción completa de los módulos principales del sistema: <strong>Usuario</strong>, <strong>Agente</strong> y <strong>Administrador</strong>. Cada subsección indica funciones, creación, asignación, permisos, endpoints y esquema de base de datos mínimo.</p>
+
+          <article class="module">
+            <h3>Módulo: Usuario</h3>
+            <p><strong>Propósito:</strong> Clientes o usuarios finales que reportan incidencias o solicitudes.</p>
+            <h4>Funciones principales</h4>
+            <ul>
+              <li>Registro / autenticación (registro por email o invitación).</li>
+              <li>Crear ticket: título, descripción, prioridad, adjuntos.</li>
+              <li>Ver y filtrar sus tickets (estado, prioridad, fecha).</li>
+              <li>Comentar en tickets y adjuntar archivos.</li>
+              <li>Cerrar/confirmar resolución (si está permitido).</li>
+            </ul>
+            <h4>Cómo se crea</h4>
+            <p>Un `Usuario` se crea vía:</p>
+            <ul>
+              <li>Formulario de registro público (self-service).</li>
+              <li>Creación por un `Administrador` desde el panel de usuarios.</li>
+            </ul>
+            <h4>Asignación / flujo</h4>
+            <p>Cuando un usuario crea un ticket, el ticket:</p>
+            <ol>
+              <li>Se registra en estado <em>nuevo</em> o <em>abierto</em>.</li>
+              <li>Puede ser encolado automáticamente según categoría/servicio.</li>
+              <li>Queda <strong>sin asignar</strong> hasta que un agente lo reclame o un administrador lo asigne.</li>
+            </ol>
+            <h4>Permisos</h4>
+            <ul>
+              <li>Ver/editar solo sus propios tickets.</li>
+              <li>No puede reasignar ni cambiar roles.</li>
+            </ul>
+            <h4>Endpoints (ejemplos)</h4>
+            <pre><code>POST /api/users         # registrar
+POST /api/tickets       # crear ticket (user_id)
+GET  /api/tickets?user=1  # listar tickets de usuario
+POST /api/tickets/{id}/comments  # añadir comentario
+</code></pre>
+            <h4>Esquema mínimo (ejemplos)</h4>
+            <pre><code class="sql">CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), email VARCHAR(150) UNIQUE, password VARCHAR(255), role VARCHAR(20), created_at DATETIME);
+CREATE TABLE tickets (id INT AUTO_INCREMENT PRIMARY KEY, user_id INT, title VARCHAR(200), description TEXT, status VARCHAR(30), priority VARCHAR(20), assigned_to INT NULL, created_at DATETIME);
+</code></pre>
+          </article>
+
+          <article class="module">
+            <h3>Módulo: Agente</h3>
+            <p><strong>Propósito:</strong> Personal de soporte que gestiona y resuelve tickets.</p>
+            <h4>Funciones principales</h4>
+            <ul>
+              <li>Ver lista de tickets asignados y pendientes (cola).</li>
+              <li>Reclamar (claim) tickets sin asignar.</li>
+              <li>Responder al usuario, agregar notas internas y cambiar estado.</li>
+              <li>Reasignar tickets a otros agentes o escalar a administrador.</li>
+              <li>Marcar prioridades y adjuntar evidencias.</li>
+            </ul>
+            <h4>Cómo se crea</h4>
+            <p>Un `Agente` normalmente es creado por un `Administrador` o provisionado mediante sincronización con un directorio corporativo.</p>
+            <h4>Asignación / flujo</h4>
+            <ol>
+              <li>El administrador puede asignar tickets directamente a un agente.</li>
+              <li>Los agentes pueden ver una cola de tickets no asignados y reclamar los que atienden.</li>
+              <li>Al reclamar, el campo <code>assigned_to</code> se actualiza con el id del agente.</li>
+            </ol>
+            <h4>Permisos</h4>
+            <ul>
+              <li>Ver tickets asignados y tickets públicos de la cola.</li>
+              <li>Modificar estado, agregar comentarios, reasignar.</li>
+              <li>Acceso limitado a paneles administrativos (según rol).</li>
+            </ul>
+            <h4>Endpoints (ejemplos)</h4>
+            <pre><code>GET  /api/tickets?assigned_to={agent_id}
+POST /api/tickets/{id}/claim    # reclamar ticket
+POST /api/tickets/{id}/reply    # respuesta / nota pública
+POST /api/tickets/{id}/internal # nota interna
+POST /api/tickets/{id}/assign   # reasignar (admin/agent con permiso)
+</code></pre>
+          </article>
+
+          <article class="module">
+            <h3>Modulo: Administrador</h3>
+            <p><strong>Propósito:</strong> Gestión completa del sistema: usuarios, agentes, configuraciones, reportes y asignaciones.</p>
+            <h4>Funciones principales</h4>
+            <ul>
+              <li>Crear/editar/eliminar usuarios y agentes.</li>
+              <li>Asignar tickets a agentes o equipos.</li>
+              <li>Gestionar categorías, prioridades y SLA.</li>
+              <li>Ver reportes, métricas y exportar datos.</li>
+              <li>Configurar integraciones (correo, webhooks, APIs).</li>
+            </ul>
+            <h4>Cómo se crea</h4>
+            <p>El primer `Administrador` suele crearse durante la instalación o mediante una seed; posteriores administradores pueden ser añadidos por usuarios con privilegios.</p>
+            <h4>Asignación / flujo</h4>
+            <p>Los administradores pueden asignar tickets manualmente o configurar reglas automáticas (por categoría, prioridad, horario).</p>
+            <h4>Permisos</h4>
+            <ul>
+              <li>Acceso completo a todos los datos y configuraciones.</li>
+              <li>Puede delegar permisos mediante roles y grupos.</li>
+            </ul>
+            <h4>Endpoints (ejemplos)</h4>
+            <pre><code>GET  /api/admin/users
+POST /api/admin/users      # crear usuario/agent
+PUT  /api/admin/users/{id} # actualizar
+POST /api/admin/tickets/{id}/assign # asignar a agente
+</code></pre>
+            <h4>Tablas y migraciones recomendadas</h4>
+            <pre><code class="sql">CREATE TABLE roles (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50));
+CREATE TABLE user_roles (user_id INT, role_id INT);
+-- permisos más finos pueden almacenarse en una tabla permissions
+</code></pre>
+          </article>
+
+          <h4>Matriz de permisos (resumen)</h4>
+          <table>
+            <thead><tr><th>Acción</th><th>Usuario</th><th>Agente</th><th>Administrador</th></tr></thead>
+            <tbody>
+              <tr><td>Crear ticket</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Ver tickets (todos)</td><td>No</td><td>Solo asignados/cola</td><td>Sí</td></tr>
+              <tr><td>Asignar ticket</td><td>No</td><td>Sí (según permiso)</td><td>Sí</td></tr>
+              <tr><td>Gestionar usuarios</td><td>No</td><td>No</td><td>Sí</td></tr>
+            </tbody>
+          </table>
+
+          <p>Adapta los endpoints y permisos a tu implementación concreta. Puedo generar migraciones SQL completas y ejemplos de requests/responses si quieres.</p>
+        </section>
+
+        <section id="api" class="panel">
+          <h2>API / Endpoints</h2>
+          <p>Ejemplos de uso con JSON.</p>
+          <h4>Obtener tickets</h4>
+          <pre><code class="http">GET /api/tickets
+Accept: application/json
+</code></pre>
+          <h4>Crear ticket (ejemplo)</h4>
+          <pre><code class="http">POST /api/tickets
+Content-Type: application/json
+
+{
+  "title": "Problema de ejemplo",
+  "description": "Descripción del problema",
+  "user_id": 1
+}
+</code></pre>
+          <p>Incluye las imágenes de ejemplo de request/response en <code>docs/assets/</code> si lo deseas.</p>
+        </section>
+
+        <section id="db" class="panel">
+          <h2>Base de datos / Migraciones</h2>
+          <p>Esquema resumido y diagrama:</p>
+          <div class="db-figure">
+            <img src="assets/db-schema.png" alt="Esquema BD" />
+          </div>
+          <pre><code class="sql">-- ejemplo mínimo
+CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), email VARCHAR(150));
+CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARCHAR(200), description TEXT, status VARCHAR(30), created_at DATETIME);
+</code></pre>
+        </section>
+
+        <section id="capturas" class="panel">
+          <h2>Capturas de pantalla</h2>
+          <p>Coloca las imágenes en <code>docs/assets/</code>. Nombres recomendados:</p>
+          <ul>
+            <li><code>dashboard.png</code> — vista principal</li>
+            <li><code>ticket-list.png</code> — lista de tickets</li>
+            <li><code>ticket-detail.png</code> — detalle</li>
+          </ul>
+          <div class="gallery">
+            <img src="assets/ticket-list.png" alt="Lista tickets" />
+            <img src="assets/ticket-detail.png" alt="Detalle ticket" />
+          </div>
+        </section>
+
+        <section id="contribuir" class="panel">
+          <h2>Contribuir / Contacto</h2>
+          <p>Pasos rápidos para contribuir al proyecto:</p>
+          <ol>
+            <li>Crear fork y branch.</li>
+            <li>Agregar tests o evidencias visuales.</li>
+            <li>Enviar Pull Request describiendo cambios.</li>
+          </ol>
+        </section>
+
+        <footer class="page-footer">
+          <small>Documentación generada — modifica los textos e imágenes según convenga.</small>
+        </footer>
+      </article>
+    </main>
+
+    <aside class="rightcol">
+      <div class="toc">
+        <h4>En esta página</h4>
+        <ul>
+          <li><a href="#intro">Introducción</a></li>
+          <li><a href="#instalacion">Instalación</a></li>
+          <li><a href="#guia">Guía rápida</a></li>
+          <li><a href="#api">API</a></li>
+          <li><a href="#db">Base de datos</a></li>
+          <li><a href="#capturas">Capturas</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Smooth scroll and active link handling
+    document.querySelectorAll('.nav a, .toc a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+  </script>
+</body>
+</html>

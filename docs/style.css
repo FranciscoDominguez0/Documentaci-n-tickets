@@ -1,0 +1,40 @@
+:root{
+	--bg:#0b1020;
+	--panel:#0f1724;
+	--muted:#9aa4b2;
+	--accent:#7aa2ff;
+	--accent-2:#2b7cff;
+	--card:#0b1220;
+	--text:#e6eef8;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);margin:0}
+.doc-layout{display:grid;grid-template-columns:1fr 260px;gap:20px;min-height:100vh;padding-left:260px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:260px;overflow:auto;background:linear-gradient(180deg,#0a1220,#0b1224);padding:20px;color:var(--muted);border-right:1px solid rgba(255,255,255,0.02)}
+.sidebar .brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sidebar .brand img{width:36px;height:36px;object-fit:cover;border-radius:6px}
+.sidebar .brand h3{color:var(--text);margin:0;font-size:14px}
+.sidebar .search{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);margin-bottom:12px}
+.nav{display:flex;flex-direction:column;gap:6px}
+.nav a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:6px}
+.nav a.active, .nav a:hover{background:rgba(255,255,255,0.02);color:var(--text)}
+.version{margin-top:18px;font-size:12px;color:var(--muted)}
+.content{padding:28px 16px}
+.page{max-width:820px;margin:0 auto}
+.page-header h1{margin:0 0 6px;font-size:28px}
+.muted{color:var(--muted);margin:0}
+.panel{background:var(--panel);border-radius:8px;padding:18px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.02)}
+.hero-preview img{width:100%;max-height:300px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+pre{background:#07101a;color:#cfe8ff;padding:12px;border-radius:6px;overflow:auto}
+code{font-family:Consolas,Monaco,ui-monospace,SFMono-Regular,Menlo,monospace}
+.split{display:flex;gap:20px}
+.split > div{flex:1}
+.db-figure img{width:100%;max-width:640px;border-radius:6px;border:1px solid rgba(255,255,255,0.03)}
+.gallery{display:flex;gap:12px;flex-wrap:wrap}
+.gallery img{width:320px;border-radius:8px;border:1px solid rgba(255,255,255,0.03)}
+.page-footer{color:var(--muted);padding-top:6px}
+.rightcol{padding:20px}
+.toc{background:transparent;color:var(--muted);position:sticky;top:20px}
+.toc h4{color:var(--text);margin:0 0 8px}
+.toc ul{list-style:none;padding:0;margin:0}
+.toc a{color:var(--muted);text-decoration:none}

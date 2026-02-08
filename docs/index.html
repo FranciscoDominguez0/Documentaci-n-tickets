@@ -32,16 +32,12 @@
         <a href="#flujos"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v4H6z"/><path d="M6 14h12v4H6z"/><path d="M12 10v4"/></svg></span>Flujos del sistema</a>
         <a href="#instalacion"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"/><path d="M8 8l4 4l4-4"/><path d="M4 14v6h16v-6"/></svg></span>Instalación</a>
         <a href="#autenticacion"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><path d="M6 11h12v10H6z"/></svg></span>Acceso y autenticación</a>
-        <a href="#panel-clientes"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span>Panel de Clientes</a>
+        <a href="#panel-usuario"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span>Panel de Usuario</a>
         <a href="#panel-agentes"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M18 7h4"/></svg></span>Panel de Agentes</a>
         <a href="#panel-admin"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6l7 1l-5 5l1 7l-6-3l-6 3l1-7l-5-5l7-1z"/></svg></span>Panel de Administración</a>
         <a href="#tareas-operativas"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l2 2l4-4"/><path d="M7 4h10a2 2 0 0 1 2 2v14H5V6a2 2 0 0 1 2-2z"/><path d="M9 4V2h6v2"/></svg></span>Tareas operativas</a>
         <a href="#api"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l-3 3l3 3"/><path d="M16 9l3 3l-3 3"/><path d="M14 6l-4 12"/></svg></span>API / Endpoints</a>
         <a href="#db"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.4 0-8 1.3-8 3v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3z"/><path d="M4 6c0 1.7 3.6 3 8 3s8-1.3 8-3"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>Base de datos</a>
-        <a href="#seguridad"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 6-3.3 9.5-8 10c-4.7-.5-8-4-8-10V6z"/><path d="M9 12l2 2l4-4"/></svg></span>Seguridad</a>
-        <a href="#troubleshooting"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 13v3l4 4l4-4v-3a7 7 0 0 0-4-13z"/><path d="M10 9h4"/><path d="M12 9v5"/></svg></span>Troubleshooting</a>
-        <a href="#faq"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.8.5-1.3 1.1-1.3 2v.4"/><path d="M12 17h.01"/></svg></span>FAQ</a>
-        <a href="#capturas"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><path d="M12 17a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/></svg></span>Capturas</a>
         <a href="#contribuir"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1l1-4z"/></svg></span>Contribuir</a>
       </nav>
       <div class="version">v1.0 • 2026</div>
@@ -51,7 +47,7 @@
       <article class="page">
         <header class="page-header">
           <h1 id="intro">Introducción</h1>
-          <p class="muted">Breve descripción del propósito del sistema y flujo principal.</p>
+          <p class="muted">Sistema de tickets ágil y visual: crea, asigna y resuelve solicitudes con trazabilidad clara para clientes, agentes y administradores.</p>
         </header>
 
         <section class="hero">
@@ -385,39 +381,58 @@ Accept: application/json
           <p class="muted">Para el detalle de permisos por acción, revisa <a href="#roles">Roles y permisos</a>.</p>
         </section>
 
-        <section id="autenticacion" class="panel with-image">
-          <div class="panel-header">
-            <div class="panel-content">
-              <h2>Autenticación / Login</h2>
-              <p>Proceso para que usuarios y agentes accedan al sistema con sus credenciales.</p>
+        <section id="autenticacion" class="panel accent-blue">
+          <h2>Autenticación / Login</h2>
+          <p class="muted">Proceso para que usuarios y agentes accedan al sistema con sus credenciales.</p>
+          
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/Login.png" alt="Pantalla Login" />
+              <div class="cap">Pantalla Login</div>
             </div>
-            <img src="assets/Login.png" alt="Pantalla Login" class="side-image" />
           </div>
+
           <h4>Flujo de Login</h4>
-          <ol>
-            <li>Usuario ingresa <code>email</code> y <code>contraseña</code> en la pantalla de login.</li>
-            <li>El sistema verifica las credenciales contra la tabla <code>users</code>.</li>
-            <li>Si es válido, se genera un token de sesión (JWT o sesión PHP).</li>
-            <li>Se redirige hacia el panel según el rol: usuario → <code>/dashboard</code>, agente → <code>/agent/tickets</code>, admin → <code>/admin</code>.</li>
+          <ol class="steps">
+            <li>El usuario ingresa su correo y contraseña en la pantalla de login.</li>
+            <li>El sistema valida las credenciales contra la tabla <code>users</code>.</li>
+            <li>Si son correctas, se genera un token de sesión (JWT o sesión PHP).</li>
+            <li>Se redirige al panel según el rol: usuario → /dashboard, agente → /agent/tickets, administrador → /admin.</li>
           </ol>
-          <h4>Vista/Pantalla de Login</h4>
-          <ul>
-            <li>Formulario con campos: email, contraseña.</li>
-            <li>Botón "Iniciar sesión".</li>
-            <li>Enlace "Olvidé mi contraseña" → va a <code>#recuperar-pwd</code>.</li>
-            <li>Enlace "Crear cuenta" → va a <code>#registro</code>.</li>
-          </ul>
+
+          <div class="cards">
+            <div class="card"><h4>Formulario</h4><p>Campos: email, contraseña.</p></div>
+            <div class="card"><h4>Botón</h4><p>“Iniciar sesión”.</p></div>
+            <div class="card"><h4>Enlaces</h4><p>“Olvidé mi contraseña” → <code>#recuperar-pwd</code>; “Crear cuenta” → <code>#registro</code>.</p></div>
+          </div>
+
           <h4>Endpoint</h4>
-          <pre><code>POST /api/auth/login
+          <div class="tabs" data-tabs>
+            <div class="tab-bar">
+              <div class="example-meta">
+                <span class="label method post">POST</span>
+                <span class="label">/api/auth/login</span>
+              </div>
+              <div class="tab-buttons" role="tablist" aria-label="Login endpoint">
+                <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="login-req">Request</button>
+                <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="login-resp">Response</button>
+                <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="login-val">Validaciones</button>
+              </div>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel active" role="tabpanel" data-panel="login-req">
+                <pre><code class="http">POST /api/auth/login
 Content-Type: application/json
+Accept: application/json
 
 {
   "email": "usuario@example.com",
   "password": "contraseña123"
 }
-
-Response (200 OK):
-{
+</code></pre>
+              </div>
+              <div class="tab-panel" role="tabpanel" data-panel="login-resp">
+                <pre><code class="json">{
   "success": true,
   "user": {
     "id": 1,
@@ -428,36 +443,74 @@ Response (200 OK):
   "token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
 }
 </code></pre>
-          <h4>Validaciones</h4>
-          <ul>
-            <li>Email vacío o formato inválido → error 400.</li>
-            <li>Contraseña incorrecta → error 401.</li>
-            <li>Usuario no existe → error 404 (o 401 por seguridad).</li>
-            <li>Usuario desactivado → error 403.</li>
-          </ul>
+              </div>
+              <div class="tab-panel" role="tabpanel" data-panel="login-val">
+                <ul class="klist" style="margin-top:0">
+                  <li class="kitem">
+                    <div class="kleft">
+                      <div class="kname">Email vacío o inválido</div>
+                      <div class="kdesc">Error 400</div>
+                    </div>
+                    <span class="label status warn">400</span>
+                  </li>
+                  <li class="kitem">
+                    <div class="kleft">
+                      <div class="kname">Contraseña incorrecta</div>
+                      <div class="kdesc">Error 401</div>
+                    </div>
+                    <span class="label status danger">401</span>
+                  </li>
+                  <li class="kitem">
+                    <div class="kleft">
+                      <div class="kname">Usuario no existe</div>
+                      <div class="kdesc">Error 404 (o 401 por seguridad)</div>
+                    </div>
+                    <span class="label status danger">404</span>
+                  </li>
+                  <li class="kitem">
+                    <div class="kleft">
+                      <div class="kname">Usuario desactivado</div>
+                      <div class="kdesc">Error 403</div>
+                    </div>
+                    <span class="label status danger">403</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section id="registro" class="panel">
+        <section id="registro" class="panel accent">
           <h2>Registro / Sign Up</h2>
-          <p>Permite que nuevos usuarios se registren en el sistema (si está habilitado públicamente).</p>
-          <h4>Flujo de Registro</h4>
-          <ol>
-            <li>Usuario hace clic en "Crear cuenta" desde la pantalla de login.</li>
-            <li>Completa formulario: nombre, email, contraseña, confirmación contraseña.</li>
-            <li>Opcionalmente, puede ingresar empresa/departamento (según la configuración).</li>
-            <li>Se envía un email de confirmación con un enlace de verificación.</li>
-            <li>Usuario confirma email y accede al sistema (con rol <code>user</code> por defecto).</li>
-          </ol>
-          <h4>Vista/Pantalla de Registro</h4>
-          <ul>
-            <li>Campos: nombre, email, contraseña, confirmar contraseña.</li>
-            <li>Checkbox: aceptar términos y condiciones.</li>
-            <li>Botón "Registrarse".</li>
-            <li>Enlace "Ya tengo cuenta" → vuelve a login.</li>
-          </ul>
+          <p class="muted">Permite que nuevos usuarios se registren en el sistema (si está habilitado públicamente).</p>
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/Register.png" alt="Registro de usuario" />
+              <div class="cap">Registro de usuario</div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="card"><h4>Formulario</h4><p>Campos: nombre, email, contraseña, confirmar contraseña.</p></div>
+            <div class="card"><h4>Términos</h4><p>Checkbox para aceptar términos y condiciones.</p></div>
+            <div class="card"><h4>Confirmación</h4><p>Envío de email de verificación y activación de cuenta.</p></div>
+          </div>
           <h4>Endpoint</h4>
-          <pre><code>POST /api/auth/register
+          <div class="tabs" data-tabs>
+            <div class="tab-bar">
+              <div class="example-meta">
+                <span class="label method post">POST</span>
+                <span class="label">/api/auth/register</span>
+              </div>
+              <div class="tab-buttons" role="tablist" aria-label="Registro endpoint">
+                <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="reg-req">Request</button>
+                <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="reg-resp">Response</button>
+              </div>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel active" role="tabpanel" data-panel="reg-req">
+                <pre><code class="http">POST /api/auth/register
 Content-Type: application/json
+Accept: application/json
 
 {
   "name": "Juan Pérez",
@@ -465,71 +518,74 @@ Content-Type: application/json
   "password": "contraseña123",
   "password_confirm": "contraseña123"
 }
-
-Response (201 Created):
-{
+</code></pre>
+              </div>
+              <div class="tab-panel" role="tabpanel" data-panel="reg-resp">
+                <pre><code class="json">{
   "success": true,
   "message": "Usuario registrado. Por favor confirma tu email.",
   "user_id": 2
 }
 </code></pre>
-          <h4>Validaciones</h4>
-          <ul>
-            <li>Email ya existe → error 409 (conflict).</li>
-            <li>Contraseña débil (&lt;8 caracteres, sin números) → error 400.</li>
-            <li>Contraseñas no coinciden → error 400.</li>
-          </ul>
-        </section>
-
-        <section id="panel-usuario" class="panel">
-          <h2>Panel de Usuario</h2>
-          <p>Interfaz principal para usuarios después de iniciar sesión. Accesible en <code>/dashboard</code> o <code>/user/home</code>.</p>
-          <h4>Componentes / Vistas</h4>
-          <ul>
-            <li><strong>Resumen (Overview):</strong> contador de tickets abiertos, en progreso, cerrados; próximas vencidas.</li>
-            <li><strong>Lista de mis tickets:</strong> tabla con columnas: ID, Título, Estado, Prioridad, Fecha, Última actualización.</li>
-            <li><strong>Filtros:</strong> por estado (abierto, en progreso, cerrado), prioridad, fecha.</li>
-            <li><strong>Botón "Crear ticket":</strong> abre formulario para crear un nuevo ticket.</li>
-            <li><strong>Perfil / Configuración:</strong> editar nombre, email, cambiar contraseña, preferencias.</li>
-          </ul>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img src="assets/User.png" alt="Vista Panel Usuario" />
-              <figcaption>Panel de usuario</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="assets/Ticket_list.png" alt="Lista de Tickets" />
-              <figcaption>Listado y filtros de tickets</figcaption>
-            </figure>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section id="panel-clientes" class="panel">
-          <h2>Panel de Clientes</h2>
-          <p>Experiencia del cliente: creación de tickets, seguimiento, interacción y cierre. Este panel prioriza claridad del estado y comunicación con el agente.</p>
-          <p class="muted">Capturas: <code>assets/Perfil-empresa.png</code>, <code>assets/Ticket_detail.png</code>.</p>
-          <ul class="steps">
-            <li><div><strong>Crear ticket</strong><div class="muted">Define título, descripción, categoría y prioridad; adjunta evidencia si aplica.</div></div></li>
-            <li><div><strong>Dar seguimiento</strong><div class="muted">Consulta el detalle, historial de cambios y respuestas del agente.</div></div></li>
-            <li><div><strong>Confirmar cierre</strong><div class="muted">Valida la solución y cierra el ticket (o responde si aún requiere ajustes).</div></div></li>
-          </ul>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img src="assets/Perfil-empresa.png" alt="Perfil / Empresa" />
-              <figcaption>Perfil y datos de empresa del cliente</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="assets/Ticket_detail.png" alt="Detalle del ticket" />
-              <figcaption>Detalle del ticket: estado, conversación y evidencias</figcaption>
-            </figure>
+        <section id="recuperar-pwd" class="panel accent-blue">
+          <h2>Recuperar Contraseña</h2>
+          <p class="muted">Flujo para que usuarios que olvidaron su contraseña la restablezcan.</p>
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/Recupera-clave.png" alt="Recuperar contraseña" />
+              <div class="cap">Recuperar contraseña</div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="card"><h4>1) Solicitud</h4><p>Usuario ingresa email en "Olvidé mi contraseña".</p></div>
+            <div class="card"><h4>2) Email</h4><p>Se envía enlace temporal con token (24h de validez).</p></div>
+            <div class="card"><h4>3) Entrada</h4><p>Usuario abre enlace y establece nueva contraseña.</p></div>
+            <div class="card"><h4>4) Confirmación</h4><p>Se valida token, se actualiza y se redirige a login.</p></div>
           </div>
         </section>
 
-        <section id="panel-agentes" class="panel">
+        <section id="panel-usuario" class="panel accent-green">
+          <h2>Panel de Usuario / Cliente</h2>
+          <p class="muted">Acceso en <code>/dashboard</code>. Crear tickets, dar seguimiento y gestionar solicitudes.</p>
+          
+          <div class="cards">
+            <div class="card"><h4>Resumen</h4><p>Contador de tickets abiertos, en progreso, cerrados; próximas vencidas.</p></div>
+            <div class="card"><h4>Lista de tickets</h4><p>Tabla con ID, título, estado, prioridad, fecha y última actualización.</p></div>
+            <div class="card"><h4>Filtros</h4><p>Por estado, prioridad y fecha.</p></div>
+            <div class="card"><h4>Crear ticket</h4><p>Formulario para registrar nuevas solicitudes.</p></div>
+            <div class="card"><h4>Perfil</h4><p>Editar datos, cambiar contraseña y preferencias.</p></div>
+          </div>
+
+          <h4>Flujo de trabajo</h4>
+          <ol class="steps">
+            <li>Crear ticket: título, descripción, categoría, prioridad y adjuntos.</li>
+            <li>Dar seguimiento: consultar detalle, historial y respuestas del agente.</li>
+            <li>Confirmar cierre: validar solución y cerrar o responder si requiere ajustes.</li>
+          </ol>
+
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/User.png" alt="Panel de usuario" />
+              <div class="cap">Panel de usuario</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="panel-agentes" class="panel accent">
           <h2>Panel de Agentes</h2>
-          <p>Operación del equipo de soporte: cola, asignación, tiempos, respuestas, notas internas y evidencias.</p>
-          <p class="muted">Captura: <code>assets/Agentes.png</code>.</p>
-          <div class="two-col">
+          <p class="muted">Operación del equipo de soporte: cola, asignación, tiempos, respuestas, notas internas y evidencias.</p>
+          <div class="cards">
+            <div class="card"><h4>Cola</h4><p>Tickets pendientes y sin asignar.</p></div>
+            <div class="card"><h4>Mis tickets</h4><p>Asignados y en progreso.</p></div>
+            <div class="card"><h4>Responder</h4><p>Respuestas públicas y notas internas.</p></div>
+            <div class="card"><h4>Reasignar</h4><p>Cambiar responsable o escalar.</p></div>
+          </div>
+          <div class="callouts">
             <div class="callout">
               <h4>Buenas prácticas</h4>
               <p>Registrar cada paso relevante en comentarios y usar notas internas para coordinación sin exponer información al cliente.</p>
@@ -539,75 +595,82 @@ Response (201 Created):
               <p>Usar “En espera” cuando falta información y “Resuelto” cuando la solución fue entregada.</p>
             </div>
           </div>
-          <figure>
-            <img src="assets/Agentes.png" alt="Panel de Agentes" class="side-image" />
-            <figcaption>Vista general del panel de agentes</figcaption>
-          </figure>
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/Agentes.png" alt="Panel de Agentes" />
+              <div class="cap">Vista general del panel de agentes</div>
+            </div>
+          </div>
         </section>
 
-        <section id="panel-admin" class="panel">
+        <section id="panel-admin" class="panel accent-blue">
           <h2>Panel de Administración</h2>
-          <p>Configuración del sistema, usuarios, permisos, reglas de asignación y supervisión general.</p>
-          <p class="muted">Capturas: <code>assets/Administrador.png</code>, <code>assets/Orgs.png</code>.</p>
+          <p class="muted">Configuración del sistema, usuarios, permisos, reglas de asignación y supervisión general.</p>
           <div class="cards">
             <div class="card"><h4>Usuarios y roles</h4><p>Altas/bajas/cambios, restablecimiento de acceso, asignación de permisos.</p></div>
             <div class="card"><h4>Catálogos</h4><p>Categorías, prioridades, estados, reglas internas y parámetros de operación.</p></div>
             <div class="card"><h4>Organizaciones</h4><p>Gestión de empresas, relación con usuarios y control administrativo.</p></div>
           </div>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
+          <div class="img-row">
+            <div class="img-card">
               <img src="assets/Administrador.png" alt="Panel Administrador" />
-              <figcaption>Panel de administración</figcaption>
-            </figure>
-            <figure class="gallery-item">
+              <div class="cap">Panel de administración</div>
+            </div>
+            <div class="img-card">
               <img src="assets/Orgs.png" alt="Organizaciones" />
-              <figcaption>Gestión de organizaciones / empresas</figcaption>
-            </figure>
+              <div class="cap">Organizaciones</div>
+            </div>
           </div>
         </section>
 
-        <section id="recuperar-pwd" class="panel">
-          <h2>Recuperar Contraseña</h2>
-          <p>Flujo para que usuarios que olvidaron su contraseña la restablezcan.</p>
-          <h4>Flujo paso a paso</h4>
-          <ol>
-            <li><strong>Paso 1 (Solicitud):</strong> Usuario ingresa email en la página "Olvidé mi contraseña".</li>
-            <li><strong>Paso 2 (Email):</strong> Se envía email con enlace temporal que incluye token válido por 24h (ej: <code>/reset-password?token=abc123xyz</code>).</li>
-            <li><strong>Paso 3 (Entrada):</strong> Usuario hace clic en el enlace, accede a página con campos: nueva contraseña, confirmar contraseña.</li>
-            <li><strong>Paso 4 (Confirmación):</strong> Se valida el token y se actualiza la contraseña. Mensaje de éxito y redirección a login.</li>
-          </ol>
-        </section>
+        <section id="tareas-operativas" class="panel accent-green">
+          <h2>Gestión de Tickets (Tareas operativas)</h2>
+          <p class="muted">Ciclo de vida del ticket: creación, gestión y cierre desde el punto de vista técnico y operativo.</p>
+          
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/tareas.png" alt="Gestión de tickets" />
+              <div class="cap">Gestión de tickets</div>
+            </div>
+          </div>
 
-        <section id="tareas-operativas" class="panel">
-          <h2>Tareas operativas (día a día)</h2>
-          <p>Checklist de tareas típicas para mantener el flujo saludable y evitar tickets estancados.</p>
-          <p class="muted">Captura: <code>assets/tareas.png</code>.</p>
+          <h4>Estados del Ticket</h4>
+          <div class="cards">
+            <div class="card"><h4>Nuevo</h4><p>Creado y pendiente de asignación/validación. <span class="label">Admin / Agente</span></p></div>
+            <div class="card"><h4>Asignado</h4><p>Hay un agente responsable definido. <span class="label">Agente</span></p></div>
+            <div class="card"><h4>En progreso</h4><p>En atención activa. <span class="label">Agente</span></p></div>
+            <div class="card"><h4>En espera</h4><p>Falta información o validación externa. <span class="label">Agente / Cliente</span></p></div>
+            <div class="card"><h4>Resuelto</h4><p>Solución entregada. <span class="label">Agente</span></p></div>
+            <div class="card"><h4>Cerrado</h4><p>Finalizado; solo lectura. <span class="label">Sistema / Admin</span></p></div>
+          </div>
+
+          <h4>Checklist diario</h4>
           <ol class="steps">
             <li><div><strong>Revisar cola sin asignar</strong><div class="muted">Asignar por prioridad/categoría y evitar duplicados.</div></div></li>
-            <li><div><strong>Atender tickets críticos</strong><div class="muted">Priorizar SLA y registrar evidencia.</div></div></li>
-            <li><div><strong>Controlar tickets en espera</strong><div class="muted">Solicitar información faltante y definir política de cierre.</div></div></li>
-            <li><div><strong>Cerrar y documentar</strong><div class="muted">Dejar causa raíz y acciones preventivas.</div></div></li>
+            <li><div><strong>Atender tickets críticos</strong><div class="muted">Priorizar SLA y registrar evidencia de progreso.</div></div></li>
+            <li><div><strong>Controlar tickets en espera</strong><div class="muted">Solicitar información faltante y definir política de cierre automático.</div></div></li>
+            <li><div><strong>Cerrar y documentar</strong><div class="muted">Dejar causa raíz, acciones preventivas y evidencia para análisis posterior.</div></div></li>
           </ol>
-          <figure>
-            <img src="assets/tareas.png" alt="Gestión de tareas" class="side-image" />
-            <figcaption>Gestión de tareas: organización del trabajo interno y seguimiento</figcaption>
-          </figure>
-        </section>
 
-        <section id="tareas-tickets" class="panel">
-          <h2>Tareas / Crear y Gestionar Tickets</h2>
-          <p>Cómo se crean tickets y cómo se gestionan durante su ciclo de vida.</p>
-          <h4>Estados del Ticket</h4>
-          <table>
-            <thead><tr><th>Estado</th><th>Descripción</th><th>Recomendación</th></tr></thead>
-            <tbody>
-              <tr><td>Nuevo</td><td>Creado y pendiente de asignación.</td><td>Validar categoría y prioridad</td></tr>
-              <tr><td>En progreso</td><td>En atención activa.</td><td>Responder con avances verificables</td></tr>
-              <tr><td>En espera</td><td>Falta información o validación.</td><td>Registrar qué falta y fecha objetivo</td></tr>
-              <tr><td>Resuelto</td><td>Solución entregada.</td><td>Solicitar confirmación del cliente</td></tr>
-              <tr><td>Cerrado</td><td>Finalizado.</td><td>Dejar resumen final y evidencia</td></tr>
-            </tbody>
-          </table>
+          <h4>Buenas prácticas (Agentes)</h4>
+          <div class="callouts">
+            <div class="callout">
+              <h4>Registro</h4>
+              <p>Documentar cada paso relevante en comentarios públicos.</p>
+            </div>
+            <div class="callout">
+              <h4>Notas internas</h4>
+              <p>Usar notas internas para coordinación sin exponer al cliente.</p>
+            </div>
+            <div class="callout">
+              <h4>Estados</h4>
+              <p>Usar “En espera” cuando falta información y “Resuelto” al entregar solución.</p>
+            </div>
+            <div class="callout">
+              <h4>Evidencia</h4>
+              <p>Adjuntar capturas, logs y confirmaciones en cada respuesta.</p>
+            </div>
+          </div>
         </section>
 
         <section id="api" class="panel accent-blue">
@@ -675,37 +738,30 @@ Accept: application/json
           </div>
         </section>
 
-        <section id="db" class="panel">
+        <section id="db" class="panel accent">
           <h2>Base de datos / Migraciones</h2>
-          <p>Esquema resumido y diagrama:</p>
-          <div class="db-figure">
-            <img src="assets/db-schema.png" alt="Esquema BD" />
-          </div>
+          <p class="muted">Esquema resumido y diagrama:</p>
           <pre><code class="sql">-- ejemplo mínimo
 CREATE TABLE users (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100), email VARCHAR(150));
 CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARCHAR(200), description TEXT, status VARCHAR(30), created_at DATETIME);
 </code></pre>
-        </section>
-
-        <section id="capturas" class="panel">
-          <h2>Capturas de pantalla</h2>
-          <p>Coloca las imágenes en <code>docs/assets/</code>. Nombres recomendados:</p>
-          <ul>
-            <li><code>dashboard.png</code> — vista principal</li>
-            <li><code>ticket-list.png</code> — lista de tickets</li>
-            <li><code>ticket-detail.png</code> — detalle</li>
-          </ul>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img src="assets/Ticket_list.png" alt="Lista tickets" />
-              <figcaption>Listado de Tickets</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="assets/Ticket_detail.png" alt="Detalle ticket" />
-              <figcaption>Detalle de Ticket</figcaption>
-            </figure>
+          <h3>Vistas del sistema</h3>
+          <div class="img-row">
+            <div class="img-card">
+              <img src="assets/Dashboard.png" alt="Vista principal" />
+              <div class="cap">Vista principal</div>
+            </div>
+            <div class="img-card">
+              <img src="assets/Ticket_list.png" alt="Lista de tickets" />
+              <div class="cap">Lista de tickets</div>
+            </div>
+            <div class="img-card">
+              <img src="assets/Ticket_detail.png" alt="Detalle del ticket" />
+              <div class="cap">Detalle del ticket</div>
+            </div>
           </div>
         </section>
+
 
         <section id="contribuir" class="panel">
           <h2>Contribuir / Contacto</h2>
@@ -718,7 +774,8 @@ CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARC
         </section>
 
         <footer class="page-footer">
-          <small>Documentación generada — modifica los textos e imágenes según convenga.</small>
+          <p><strong>Creado por:</strong> Francisco Dominguez • <a href="mailto:dominguezf225@gmail.com">dominguezf225@gmail.com</a></p>
+          <p style="text-align:center"><small>&copy; 2026 Sistema Tickets. Todos los derechos reservados.</small></p>
         </footer>
       </article>
     </main>

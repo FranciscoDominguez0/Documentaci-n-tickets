@@ -26,18 +26,23 @@
       </div>
       <input class="search" placeholder="Buscar..." aria-label="Buscar documentación" />
       <nav class="nav">
-        <a href="#intro" class="active">Introducción</a>
-        <a href="#instalacion">Instalación</a>
-        <a href="#guia">Guía rápida</a>
-        <a href="#autenticacion">Autenticación</a>
-        <a href="#registro">Registro</a>
-        <a href="#panel-usuario">Panel Usuario</a>
-        <a href="#recuperar-pwd">Recuperar Contraseña</a>
-        <a href="#tareas-tickets">Tareas / Tickets</a>
-        <a href="#api">API / Endpoints</a>
-        <a href="#db">Base de datos</a>
-        <a href="#capturas">Capturas</a>
-        <a href="#contribuir">Contribuir</a>
+        <a href="#intro" class="active"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h6"/></svg></span>Introducción</a>
+        <a href="#objetivos"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4"/><path d="M4.9 4.9l2.8 2.8"/><path d="M2 12h4"/><path d="M4.9 19.1l2.8-2.8"/><path d="M12 18v4"/><path d="M19.1 19.1l-2.8-2.8"/><path d="M18 12h4"/><path d="M19.1 4.9l-2.8 2.8"/><path d="M12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10z"/></svg></span>Objetivos y Alcance</a>
+        <a href="#roles"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M18 8a3 3 0 1 0 0-6"/></svg></span>Roles y permisos</a>
+        <a href="#flujos"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v4H6z"/><path d="M6 14h12v4H6z"/><path d="M12 10v4"/></svg></span>Flujos del sistema</a>
+        <a href="#instalacion"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"/><path d="M8 8l4 4l4-4"/><path d="M4 14v6h16v-6"/></svg></span>Instalación</a>
+        <a href="#autenticacion"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3"/><path d="M6 11h12v10H6z"/></svg></span>Acceso y autenticación</a>
+        <a href="#panel-clientes"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span>Panel de Clientes</a>
+        <a href="#panel-agentes"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M18 7h4"/></svg></span>Panel de Agentes</a>
+        <a href="#panel-admin"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6l7 1l-5 5l1 7l-6-3l-6 3l1-7l-5-5l7-1z"/></svg></span>Panel de Administración</a>
+        <a href="#tareas-operativas"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l2 2l4-4"/><path d="M7 4h10a2 2 0 0 1 2 2v14H5V6a2 2 0 0 1 2-2z"/><path d="M9 4V2h6v2"/></svg></span>Tareas operativas</a>
+        <a href="#api"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l-3 3l3 3"/><path d="M16 9l3 3l-3 3"/><path d="M14 6l-4 12"/></svg></span>API / Endpoints</a>
+        <a href="#db"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c-4.4 0-8 1.3-8 3v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6c0-1.7-3.6-3-8-3z"/><path d="M4 6c0 1.7 3.6 3 8 3s8-1.3 8-3"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span>Base de datos</a>
+        <a href="#seguridad"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 6-3.3 9.5-8 10c-4.7-.5-8-4-8-10V6z"/><path d="M9 12l2 2l4-4"/></svg></span>Seguridad</a>
+        <a href="#troubleshooting"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-4 13v3l4 4l4-4v-3a7 7 0 0 0-4-13z"/><path d="M10 9h4"/><path d="M12 9v5"/></svg></span>Troubleshooting</a>
+        <a href="#faq"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M9.5 9a2.5 2.5 0 1 1 3.8 2.1c-.8.5-1.3 1.1-1.3 2v.4"/><path d="M12 17h.01"/></svg></span>FAQ</a>
+        <a href="#capturas"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><path d="M12 17a4 4 0 1 0-4-4a4 4 0 0 0 4 4z"/></svg></span>Capturas</a>
+        <a href="#contribuir"><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1l1-4z"/></svg></span>Contribuir</a>
       </nav>
       <div class="version">v1.0 • 2026</div>
     </aside>
@@ -51,10 +56,100 @@
 
         <section class="panel">
           <h2>Visión general</h2>
-          <p>Este sistema gestiona la creación, seguimiento y resolución de tickets de soporte interno.</p>
+          <p>Este sistema centraliza la creación, asignación, atención y cierre de solicitudes mediante un flujo controlado de tickets. Está diseñado para operar con perfiles diferenciados (clientes, agentes y administradores), mantener trazabilidad y acelerar la resolución con métricas y estados.</p>
+          <div class="badges">
+            <span class="badge"><span class="dot"></span>Roles: Cliente / Agente / Admin</span>
+            <span class="badge"><span class="dot"></span>Trazabilidad y auditoría</span>
+            <span class="badge"><span class="dot"></span>Asignación y priorización</span>
+            <span class="badge"><span class="dot"></span>Historial y comentarios</span>
+          </div>
+          <div class="callouts">
+            <div class="callout">
+              <h4>Qué resuelve</h4>
+              <p>Ordena la demanda de soporte, reduce tiempos de respuesta y hace visible el estado real de cada solicitud.</p>
+            </div>
+            <div class="callout">
+              <h4>Cómo opera</h4>
+              <p>Los clientes registran tickets; los agentes los atienden; el administrador define reglas, usuarios y reportes.</p>
+            </div>
+            <div class="callout">
+              <h4>Qué queda registrado</h4>
+              <p>Estados, responsables, prioridad, tiempos, comentarios, adjuntos y eventos relevantes.</p>
+            </div>
+          </div>
           <div class="hero-preview">
             <img src="assets/Dashboard.png" alt="Dashboard" />
           </div>
+        </section>
+
+        <section id="objetivos" class="panel">
+          <h2>Objetivos y Alcance</h2>
+          <div class="two-col">
+            <div class="card">
+              <h4>Objetivos</h4>
+              <p>Estandarizar el proceso de soporte, medir desempeño (tiempos y cargas) y asegurar una experiencia consistente para clientes y agentes.</p>
+            </div>
+            <div class="card">
+              <h4>Alcance</h4>
+              <p>Incluye: autenticación, creación y seguimiento de tickets, asignación, comentarios, adjuntos, gestión de usuarios/roles y reportes básicos.</p>
+            </div>
+          </div>
+          <hr />
+          <h3>Definiciones rápidas</h3>
+          <table>
+            <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+            <tbody>
+              <tr><td>Ticket</td><td>Registro de una solicitud/incidencia con ciclo de vida, responsable y evidencia.</td></tr>
+              <tr><td>Cliente</td><td>Usuario final que reporta y da seguimiento a sus tickets.</td></tr>
+              <tr><td>Agente</td><td>Soporte que atiende, responde, clasifica y resuelve tickets.</td></tr>
+              <tr><td>Administrador</td><td>Gestiona usuarios, parámetros del sistema, asignación avanzada y reportes.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="roles" class="panel">
+          <h2>Roles y permisos</h2>
+          <p>Los permisos pueden variar por implementación. Esta matriz sirve como base para un control consistente.</p>
+          <table>
+            <thead><tr><th>Acción</th><th>Cliente</th><th>Agente</th><th>Administrador</th></tr></thead>
+            <tbody>
+              <tr><td>Crear ticket</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Ver tickets</td><td>Propios</td><td>Asignados y cola</td><td>Todos</td></tr>
+              <tr><td>Cambiar estado</td><td>Limitado</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Asignar/Reasignar</td><td>No</td><td>Según permiso</td><td>Sí</td></tr>
+              <tr><td>Administrar usuarios</td><td>No</td><td>No</td><td>Sí</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="flujos" class="panel">
+          <h2>Flujos del sistema</h2>
+          <div class="cards">
+            <div class="card">
+              <h4>Flujo: creación y asignación</h4>
+              <p>Cliente crea ticket → entra a cola → se asigna (manual o por reglas) → agente inicia atención.</p>
+            </div>
+            <div class="card">
+              <h4>Flujo: resolución y cierre</h4>
+              <p>Agente responde → solicita info (si aplica) → marca resuelto → cliente confirma o se cierra por política.</p>
+            </div>
+            <div class="card">
+              <h4>Flujo: escalamiento</h4>
+              <p>Tickets críticos pueden escalarse por prioridad, SLA, categoría o falta de respuesta.</p>
+            </div>
+          </div>
+          <h3>Estados recomendados</h3>
+          <table>
+            <thead><tr><th>Estado</th><th>Descripción</th><th>Responsable principal</th></tr></thead>
+            <tbody>
+              <tr><td>Nuevo</td><td>Ticket recién creado, pendiente de revisión/asignación.</td><td>Sistema / Admin</td></tr>
+              <tr><td>Asignado</td><td>Hay un agente responsable definido.</td><td>Agente</td></tr>
+              <tr><td>En progreso</td><td>Se está trabajando activamente.</td><td>Agente</td></tr>
+              <tr><td>En espera</td><td>Falta información del cliente o validación externa.</td><td>Cliente / Agente</td></tr>
+              <tr><td>Resuelto</td><td>Solución entregada; pendiente confirmación/cierre.</td><td>Cliente</td></tr>
+              <tr><td>Cerrado</td><td>Finalizado; no admite cambios (o queda solo lectura).</td><td>Sistema</td></tr>
+            </tbody>
+          </table>
         </section>
 
         <section id="instalacion" class="panel">
@@ -65,7 +160,7 @@ start http://localhost/sistema-tickets/docs/
 </code></pre>
           <h3>Requisitos</h3>
           <ul>
-            <li>PHP 8.1+</li>
+            <li>PHP 8.1 o superior</li>
             <li>MySQL / MariaDB</li>
             <li>Composer (opcional)</li>
           </ul>
@@ -255,237 +350,270 @@ CREATE TABLE user_roles (user_id INT, role_id INT);
           </ul>
           <h4>Endpoint</h4>
           <pre><code>POST /api/auth/login
-+Content-Type: application/json
-+
-+{
-+  "email": "usuario@example.com",
-+  "password": "contraseña123"
-+}
-+
-+Response (200 OK):
-+{
-+  "success": true,
-+  "user": {
-+    "id": 1,
-+    "name": "Juan Pérez",
-+    "email": "usuario@example.com",
-+    "role": "user"
-+  },
-+  "token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
-+}
-+</code></pre>
-+          <h4>Validaciones</h4>
-+          <ul>
-+            <li>Email vacío o formato inválido → error 400.</li>
-+            <li>Contraseña incorrecta → error 401.</li>
-+            <li>Usuario no existe → error 404 (o 401 por seguridad).</li>
-+            <li>Usuario desactivado → error 403.</li>
-+          </ul>
-+        </section>
-+
-+        <section id="registro" class="panel">
-+          <h2>Registro / Sign Up</h2>
-+          <p>Permite que nuevos usuarios se registren en el sistema (si está habilitado públicamente).</p>
-+          <h4>Flujo de Registro</h4>
-+          <ol>
-+            <li>Usuario hace clic en "Crear cuenta" desde la pantalla de login.</li>
-+            <li>Completa formulario: nombre, email, contraseña, confirmación contraseña.</li>
-+            <li>Opcionalmente, puede ingresar empresa/departamento (según la configuración).</li>
-+            <li>Se envía un email de confirmación con un enlace de verificación.</li>
-+            <li>Usuario confirma email y accede al sistema (con rol <code>user</code> por defecto).</li>
-+          </ol>
-+          <h4>Vista/Pantalla de Registro</h4>
-+          <ul>
-+            <li>Campos: nombre, email, contraseña, confirmar contraseña.</li>
-+            <li>Checkbox: aceptar términos y condiciones.</li>
-+            <li>Botón "Registrarse".</li>
-+            <li>Enlace "Ya tengo cuenta" → vuelve a login.</li>
-+          </ul>
-+          <h4>Endpoint</h4>
-+          <pre><code>POST /api/auth/register
-+Content-Type: application/json
-+
-+{
-+  "name": "Juan Pérez",
-+  "email": "usuario@example.com",
-+  "password": "contraseña123",
-+  "password_confirm": "contraseña123"
-+}
-+
-+Response (201 Created):
-+{
-+  "success": true,
-+  "message": "Usuario registrado. Por favor confirma tu email.",
-+  "user_id": 2
-+}
-+</code></pre>
-+          <h4>Validaciones</h4>
-+          <ul>
-+            <li>Email ya existe → error 409 (conflict).</li>
-+            <li>Contraseña débil (&lt;8 caracteres, sin números) → error 400.</li>
-+            <li>Contraseñas no coinciden → error 400.</li>
-+          </ul>
-+        </section>
-+
-+        <section id="panel-usuario" class="panel">
-+          <h2>Panel de Usuario</h2>
-+          <p>Interfaz principal para usuarios después de iniciar sesión. Accesible en <code>/dashboard</code> o <code>/user/home</code>.</p>
-+          <h4>Componentes / Vistas</h4>
-+          <ul>
-+            <li><strong>Resumen (Overview):</strong> contador de tickets abiertos, en progreso, cerrados; próximas vencidas.</li>
-+            <li><strong>Lista de mis tickets:</strong> tabla con columnas: ID, Título, Estado, Prioridad, Fecha, Última actualización.</li>
-+            <li><strong>Filtros:</strong> por estado (abierto, en progreso, cerrado), prioridad, fecha.</li>
-+            <li><strong>Botón "Crear ticket":</strong> abre formulario para crear un nuevo ticket.</li>
-+            <li><strong>Perfil / Configuración:</strong> editar nombre, email, cambiar contraseña, preferencias.</li>
-+          </ul>
-+          <h4>Acciones disponibles</h4>
-+          <ol>
-+            <li>Ver detalle de un ticket (descripción, comentarios, historial).</li>
-+            <li>Agregar comentario a un ticket abierto.</li>
-+            <li>Cerrar un ticket (si el estado lo permite).</li>
-+            <li>Descargar adjuntos del ticket.</li>
-+          </ol>
-+          <h4>Endpoints</h4>
-+          <pre><code>GET  /api/user/dashboard
-+GET  /api/user/tickets
-+GET  /api/user/tickets/{id}
-+POST /api/user/tickets
-+</code></pre>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <img src="assets/User.png" alt="Vista Panel Usuario" />
-              <figcaption>Panel de Usuario</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <img src="assets/Ticket_list.png" alt="Lista de Tickets" />
-              <figcaption>Lista de Tickets</figcaption>
-            </figure>
-          </div>
-+        </section>
-+
-+        <section id="recuperar-pwd" class="panel">
-+          <h2>Recuperar Contraseña</h2>
-+          <p>Flujo para que usuarios que olvidaron su contraseña la restablezcan.</p>
-+          <h4>Flujo paso a paso</h4>
-+          <ol>
-+            <li><strong>Paso 1 (Solicitud):</strong> Usuario ingresa email en la página "Olvidé mi contraseña".</li>
-+            <li><strong>Paso 2 (Email):</strong> Se envía email con enlace temporal que incluye token válido por 24h (ej: <code>/reset-password?token=abc123xyz</code>).</li>
-+            <li><strong>Paso 3 (Entrada):</strong> Usuario hace clic en el enlace, accede a página con campos: nueva contraseña, confirmar contraseña.</li>
-+            <li><strong>Paso 4 (Confirmación):</strong> Se valida el token y se actualiza la contraseña. Mensaje de éxito y redirección a login.</li>
-+          </ol>
-+          <h4>Endpoints</h4>
-+          <pre><code>POST /api/auth/forgot-password
-+{
-+  "email": "usuario@example.com"
-+}
-+Response: { "message": "Email enviado con instrucciones" }
-+
-+POST /api/auth/reset-password
-+{
-+  "token": "abc123xyz...",
-+  "password": "nueva_contraseña",
-+  "password_confirm": "nueva_contraseña"
-+}
-+Response: { "success": true, "message": "Contraseña actualizada" }
-+</code></pre>
-+          <h4>Validaciones de seguridad</h4>
-+          <ul>
-+            <li>Token expirado → error 410 (gone).</li>
-+            <li>Token inválido → error 401.</li>
-+            <li>Email no existe → no revelar (respuesta genérica: "Si el email existe, enviaremos instrucciones").</li>
-+            <li>Contraseña débil → error 400.</li>
-+          </ul>
-+        </section>
-+
-+        <section id="tareas-tickets" class="panel">
-+          <h2>Tareas / Crear y Gestionar Tickets</h2>
-+          <p>Explicación completa de cómo usuarios crean tickets y los gestionan durante su ciclo de vida.</p>
-+          <h4>Crear un Ticket</h4>
-+          <h5>Formulario</h5>
-+          <ul>
-+            <li><strong>Título:</strong> asunto principal (requerido, 10-200 caracteres).</li>
-+            <li><strong>Descripción:</strong> detalles del problema o solicitud (requerido, mínimo 20 caracteres).</li>
-+            <li><strong>Categoría:</strong> dropdown para seleccionar (soporte, facturación, técnico, otro).</li>
-+            <li><strong>Prioridad:</strong> baja, media, alta, urgente (por defecto: media).</li>
-+            <li><strong>Adjuntos:</strong> opcionalmente cargar archivos (máx 5 archivos, 10 MB c/u).</li>
-+          </ul>
-+          <h5>Endpoint</h5>
-+          <pre><code>POST /api/tickets
-+Content-Type: multipart/form-data
-+
-+{
-+  "title": "No puedo acceder a mi cuenta",
-+  "description": "Olvidé mi contraseña y no recibí el email de recuperación...",
-+  "category": "soporte",
-+  "priority": "high",
-+  "attachments": [archivo1.pdf, archivo2.jpg]
-+}
-+
-+Response (201):
-+{
-+  "success": true,
-+  "ticket": {
-+    "id": 42,
-+    "user_id": 1,
-+    "title": "No puedo acceder a mi cuenta",
-+    "status": "new",
-+    "created_at": "2026-02-08T10:30:00Z"
-+  }
-+}
-+</code></pre>
-+          <h4>Estados del Ticket</h4>
-+          <table>
-+            <thead><tr><th>Estado</th><th>Descripción</th><th>Usuario puede cerrar</th></tr></thead>
-+            <tbody>
-+              <tr><td>Nuevo</td><td>Acaba de ser creado, en espera de asignación.</td><td>Sí</td></tr>
-+              <tr><td>Asignado</td><td>Un agente lo ha reclamado.</td><td>No</td></tr>
-+              <tr><td>En progreso</td><td>Se está trabajando en la solución.</td><td>No</td></tr>
-+              <tr><td>En espera</td><td>Requiere información adicional del usuario.</td><td>No</td></tr>
-+              <tr><td>Resuelto</td><td>Se proporcionó una solución.</td><td>Sí (confirmar cierre)</td></tr>
-+              <tr><td>Cerrado</td><td>Ticket cerrado, no se pueden agregar más respuestas.</td><td>-</td></tr>
-+            </tbody>
-+          </table>
-+          <h4>Ciclo de vida del Ticket</h4>
-+          <ol>
-+            <li><strong>Creación:</strong> usuario → estado "Nuevo", sin asignar.</li>
-+            <li><strong>Asignación:</strong> admin/agente reclama → estado "Asignado", campo <code>assigned_to</code> se completa.</li>
-+            <li><strong>Respuestas:</strong> agente responde y cambia a "En progreso".</li>
-+            <li><strong>Espera:</strong> si necesita info del usuario, estado "En espera".</li>
-+            <li><strong>Resolución:</strong> agente marca como "Resuelto".</li>
-+            <li><strong>Cierre:</strong> usuario confirma o agente cierra automáticamente después de X días.</li>
-+          </ol>
-+          <h4>Interacción Usuario-Agente</h4>
-+          <ul>
-+            <li>El usuario ve comentarios públicos (respuestas del agente).</li>
-+            <li>El usuario puede responder a cada comentario del agente.</li>
-+            <li>Las notas internas (solo agentes) no son visibles para el usuario.</li>
-+            <li>Cuando el agente responde, se envía notificación por email al usuario.</li>
-+          </ul>
-+          <h4>Endpoints adicionales</h4>
-+          <pre><code>GET  /api/tickets/{id}
-+POST /api/tickets/{id}/comments
-+PUT  /api/tickets/{id}/status
-+</code></pre>
-+        </section>
-
-        <section id="api" class="panel">
-          <h2>API / Endpoints</h2>
-          <p>Ejemplos de uso con JSON.</p>
-          <h4>Obtener tickets</h4>
-          <pre><code class="http">GET /api/tickets
-Accept: application/json
-</code></pre>
-          <h4>Crear ticket (ejemplo)</h4>
-          <pre><code class="http">POST /api/tickets
 Content-Type: application/json
 
 {
-  "title": "Problema de ejemplo",
-  "description": "Descripción del problema",
-  "user_id": 1
+  "email": "usuario@example.com",
+  "password": "contraseña123"
+}
+
+Response (200 OK):
+{
+  "success": true,
+  "user": {
+    "id": 1,
+    "name": "Juan Pérez",
+    "email": "usuario@example.com",
+    "role": "user"
+  },
+  "token": "eyJ0eXAiOiJKV1QiLCJhbGc..."
 }
 </code></pre>
-          <p>Incluye las imágenes de ejemplo de request/response en <code>docs/assets/</code> si lo deseas.</p>
+          <h4>Validaciones</h4>
+          <ul>
+            <li>Email vacío o formato inválido → error 400.</li>
+            <li>Contraseña incorrecta → error 401.</li>
+            <li>Usuario no existe → error 404 (o 401 por seguridad).</li>
+            <li>Usuario desactivado → error 403.</li>
+          </ul>
+        </section>
+
+        <section id="registro" class="panel">
+          <h2>Registro / Sign Up</h2>
+          <p>Permite que nuevos usuarios se registren en el sistema (si está habilitado públicamente).</p>
+          <h4>Flujo de Registro</h4>
+          <ol>
+            <li>Usuario hace clic en "Crear cuenta" desde la pantalla de login.</li>
+            <li>Completa formulario: nombre, email, contraseña, confirmación contraseña.</li>
+            <li>Opcionalmente, puede ingresar empresa/departamento (según la configuración).</li>
+            <li>Se envía un email de confirmación con un enlace de verificación.</li>
+            <li>Usuario confirma email y accede al sistema (con rol <code>user</code> por defecto).</li>
+          </ol>
+          <h4>Vista/Pantalla de Registro</h4>
+          <ul>
+            <li>Campos: nombre, email, contraseña, confirmar contraseña.</li>
+            <li>Checkbox: aceptar términos y condiciones.</li>
+            <li>Botón "Registrarse".</li>
+            <li>Enlace "Ya tengo cuenta" → vuelve a login.</li>
+          </ul>
+          <h4>Endpoint</h4>
+          <pre><code>POST /api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Juan Pérez",
+  "email": "usuario@example.com",
+  "password": "contraseña123",
+  "password_confirm": "contraseña123"
+}
+
+Response (201 Created):
+{
+  "success": true,
+  "message": "Usuario registrado. Por favor confirma tu email.",
+  "user_id": 2
+}
+</code></pre>
+          <h4>Validaciones</h4>
+          <ul>
+            <li>Email ya existe → error 409 (conflict).</li>
+            <li>Contraseña débil (&lt;8 caracteres, sin números) → error 400.</li>
+            <li>Contraseñas no coinciden → error 400.</li>
+          </ul>
+        </section>
+
+        <section id="panel-usuario" class="panel">
+          <h2>Panel de Usuario</h2>
+          <p>Interfaz principal para usuarios después de iniciar sesión. Accesible en <code>/dashboard</code> o <code>/user/home</code>.</p>
+          <h4>Componentes / Vistas</h4>
+          <ul>
+            <li><strong>Resumen (Overview):</strong> contador de tickets abiertos, en progreso, cerrados; próximas vencidas.</li>
+            <li><strong>Lista de mis tickets:</strong> tabla con columnas: ID, Título, Estado, Prioridad, Fecha, Última actualización.</li>
+            <li><strong>Filtros:</strong> por estado (abierto, en progreso, cerrado), prioridad, fecha.</li>
+            <li><strong>Botón "Crear ticket":</strong> abre formulario para crear un nuevo ticket.</li>
+            <li><strong>Perfil / Configuración:</strong> editar nombre, email, cambiar contraseña, preferencias.</li>
+          </ul>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="assets/User.png" alt="Vista Panel Usuario" />
+              <figcaption>Panel de usuario</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="assets/Ticket_list.png" alt="Lista de Tickets" />
+              <figcaption>Listado y filtros de tickets</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="panel-clientes" class="panel">
+          <h2>Panel de Clientes</h2>
+          <p>Experiencia del cliente: creación de tickets, seguimiento, interacción y cierre. Este panel prioriza claridad del estado y comunicación con el agente.</p>
+          <p class="muted">Capturas: <code>assets/Perfil-empresa.png</code>, <code>assets/Ticket_detail.png</code>.</p>
+          <ul class="steps">
+            <li><div><strong>Crear ticket</strong><div class="muted">Define título, descripción, categoría y prioridad; adjunta evidencia si aplica.</div></div></li>
+            <li><div><strong>Dar seguimiento</strong><div class="muted">Consulta el detalle, historial de cambios y respuestas del agente.</div></div></li>
+            <li><div><strong>Confirmar cierre</strong><div class="muted">Valida la solución y cierra el ticket (o responde si aún requiere ajustes).</div></div></li>
+          </ul>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="assets/Perfil-empresa.png" alt="Perfil / Empresa" />
+              <figcaption>Perfil y datos de empresa del cliente</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="assets/Ticket_detail.png" alt="Detalle del ticket" />
+              <figcaption>Detalle del ticket: estado, conversación y evidencias</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="panel-agentes" class="panel">
+          <h2>Panel de Agentes</h2>
+          <p>Operación del equipo de soporte: cola, asignación, tiempos, respuestas, notas internas y evidencias.</p>
+          <p class="muted">Captura: <code>assets/Agentes.png</code>.</p>
+          <div class="two-col">
+            <div class="callout">
+              <h4>Buenas prácticas</h4>
+              <p>Registrar cada paso relevante en comentarios y usar notas internas para coordinación sin exponer información al cliente.</p>
+            </div>
+            <div class="callout">
+              <h4>Control de estado</h4>
+              <p>Usar “En espera” cuando falta información y “Resuelto” cuando la solución fue entregada.</p>
+            </div>
+          </div>
+          <figure>
+            <img src="assets/Agentes.png" alt="Panel de Agentes" class="side-image" />
+            <figcaption>Vista general del panel de agentes</figcaption>
+          </figure>
+        </section>
+
+        <section id="panel-admin" class="panel">
+          <h2>Panel de Administración</h2>
+          <p>Configuración del sistema, usuarios, permisos, reglas de asignación y supervisión general.</p>
+          <p class="muted">Capturas: <code>assets/Administrador.png</code>, <code>assets/Orgs.png</code>.</p>
+          <div class="cards">
+            <div class="card"><h4>Usuarios y roles</h4><p>Altas/bajas/cambios, restablecimiento de acceso, asignación de permisos.</p></div>
+            <div class="card"><h4>Catálogos</h4><p>Categorías, prioridades, estados, reglas internas y parámetros de operación.</p></div>
+            <div class="card"><h4>Organizaciones</h4><p>Gestión de empresas, relación con usuarios y control administrativo.</p></div>
+          </div>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <img src="assets/Administrador.png" alt="Panel Administrador" />
+              <figcaption>Panel de administración</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <img src="assets/Orgs.png" alt="Organizaciones" />
+              <figcaption>Gestión de organizaciones / empresas</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="recuperar-pwd" class="panel">
+          <h2>Recuperar Contraseña</h2>
+          <p>Flujo para que usuarios que olvidaron su contraseña la restablezcan.</p>
+          <h4>Flujo paso a paso</h4>
+          <ol>
+            <li><strong>Paso 1 (Solicitud):</strong> Usuario ingresa email en la página "Olvidé mi contraseña".</li>
+            <li><strong>Paso 2 (Email):</strong> Se envía email con enlace temporal que incluye token válido por 24h (ej: <code>/reset-password?token=abc123xyz</code>).</li>
+            <li><strong>Paso 3 (Entrada):</strong> Usuario hace clic en el enlace, accede a página con campos: nueva contraseña, confirmar contraseña.</li>
+            <li><strong>Paso 4 (Confirmación):</strong> Se valida el token y se actualiza la contraseña. Mensaje de éxito y redirección a login.</li>
+          </ol>
+        </section>
+
+        <section id="tareas-operativas" class="panel">
+          <h2>Tareas operativas (día a día)</h2>
+          <p>Checklist de tareas típicas para mantener el flujo saludable y evitar tickets estancados.</p>
+          <p class="muted">Captura: <code>assets/tareas.png</code>.</p>
+          <ol class="steps">
+            <li><div><strong>Revisar cola sin asignar</strong><div class="muted">Asignar por prioridad/categoría y evitar duplicados.</div></div></li>
+            <li><div><strong>Atender tickets críticos</strong><div class="muted">Priorizar SLA y registrar evidencia.</div></div></li>
+            <li><div><strong>Controlar tickets en espera</strong><div class="muted">Solicitar información faltante y definir política de cierre.</div></div></li>
+            <li><div><strong>Cerrar y documentar</strong><div class="muted">Dejar causa raíz y acciones preventivas.</div></div></li>
+          </ol>
+          <figure>
+            <img src="assets/tareas.png" alt="Gestión de tareas" class="side-image" />
+            <figcaption>Gestión de tareas: organización del trabajo interno y seguimiento</figcaption>
+          </figure>
+        </section>
+
+        <section id="tareas-tickets" class="panel">
+          <h2>Tareas / Crear y Gestionar Tickets</h2>
+          <p>Cómo se crean tickets y cómo se gestionan durante su ciclo de vida.</p>
+          <h4>Estados del Ticket</h4>
+          <table>
+            <thead><tr><th>Estado</th><th>Descripción</th><th>Recomendación</th></tr></thead>
+            <tbody>
+              <tr><td>Nuevo</td><td>Creado y pendiente de asignación.</td><td>Validar categoría y prioridad</td></tr>
+              <tr><td>En progreso</td><td>En atención activa.</td><td>Responder con avances verificables</td></tr>
+              <tr><td>En espera</td><td>Falta información o validación.</td><td>Registrar qué falta y fecha objetivo</td></tr>
+              <tr><td>Resuelto</td><td>Solución entregada.</td><td>Solicitar confirmación del cliente</td></tr>
+              <tr><td>Cerrado</td><td>Finalizado.</td><td>Dejar resumen final y evidencia</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="api" class="panel">
+          <h2>API / Endpoints</h2>
+          <p class="muted">Ejemplos compactos. Para capturas, usa <code>docs/assets/</code>.</p>
+
+          <h3>Listado rápido</h3>
+          <table>
+            <thead><tr><th>Método</th><th>Ruta</th><th>Descripción</th></tr></thead>
+            <tbody>
+              <tr><td><span class="label method get">GET</span></td><td><code>/api/tickets</code></td><td>Listar tickets (con filtros).</td></tr>
+              <tr><td><span class="label method post">POST</span></td><td><code>/api/tickets</code></td><td>Crear ticket.</td></tr>
+              <tr><td><span class="label method get">GET</span></td><td><code>/api/tickets/{id}</code></td><td>Detalle de ticket.</td></tr>
+            </tbody>
+          </table>
+
+          <div class="tabs" data-tabs>
+            <div class="tab-bar">
+              <div class="example-meta">
+                <span class="label method post">POST</span>
+                <span class="label">/api/tickets</span>
+              </div>
+              <div class="tab-buttons" role="tablist" aria-label="Ejemplo de API">
+                <button class="tab-btn" type="button" role="tab" aria-selected="true" data-tab="req">Request</button>
+                <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="resp200">Response 200</button>
+                <button class="tab-btn" type="button" role="tab" aria-selected="false" data-tab="resp404">Response 404</button>
+              </div>
+            </div>
+            <div class="tab-panels">
+              <div class="tab-panel active" role="tabpanel" data-panel="req">
+                <pre><code class="http">POST /api/tickets
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "No puedo iniciar sesión",
+  "description": "El sistema indica credenciales inválidas aunque son correctas.",
+  "priority": "high",
+  "category": "soporte"
+}
+</code></pre>
+              </div>
+              <div class="tab-panel" role="tabpanel" data-panel="resp200">
+                <pre><code class="json">{
+  "success": true,
+  "ticket": {
+    "id": 42,
+    "status": "new",
+    "created_at": "2026-02-08T15:21:00-05:00"
+  }
+}
+</code></pre>
+              </div>
+              <div class="tab-panel" role="tabpanel" data-panel="resp404">
+                <pre><code class="json">{
+  "success": false,
+  "error": {
+    "code": "CATEGORY_NOT_FOUND",
+    "message": "La categoría enviada no existe."
+  }
+}
+</code></pre>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="db" class="panel">
@@ -535,35 +663,135 @@ CREATE TABLE tickets (id INT PRIMARY KEY AUTO_INCREMENT, user_id INT, title VARC
         </footer>
       </article>
     </main>
-
-    <aside class="rightcol">
-      <div class="toc">
-        <h4>En esta página</h4>
-        <ul>
-          <li><a href="#intro">Introducción</a></li>
-          <li><a href="#instalacion">Instalación</a></li>
-          <li><a href="#guia">Guía rápida</a></li>
-          <li><a href="#autenticacion">Autenticación</a></li>
-          <li><a href="#registro">Registro</a></li>
-          <li><a href="#panel-usuario">Panel Usuario</a></li>
-          <li><a href="#recuperar-pwd">Recuperar Contraseña</a></li>
-          <li><a href="#tareas-tickets">Tareas / Tickets</a></li>
-          <li><a href="#api">API</a></li>
-          <li><a href="#db">Base de datos</a></li>
-          <li><a href="#capturas">Capturas</a></li>
-        </ul>
-      </div>
-    </aside>
   </div>
 
   <script>
-    // Smooth scroll and active link handling
-    document.querySelectorAll('.nav a, .toc a').forEach(a=>{
-      a.addEventListener('click', e=>{
+    const navLinks = Array.from(document.querySelectorAll('.nav a'));
+    const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+    const allLinks = [...navLinks, ...tocLinks];
+
+    function setActive(hash) {
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === hash));
+    }
+
+    // Smooth scroll + keep URL hash
+    allLinks.forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior:'smooth'});
+        history.pushState(null, '', href);
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActive(href);
       });
+    });
+
+    // Scroll-spy estable (basado en scroll)
+    const targets = navLinks
+      .map(a => a.getAttribute('href'))
+      .filter(h => h && h.startsWith('#'))
+      .map(h => ({ hash: h, el: document.querySelector(h) }))
+      .filter(x => x.el);
+
+    function pickInitial() {
+      const hash = location.hash || '#intro';
+      setActive(hash);
+    }
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        ticking = false;
+        const y = 120;
+        let current = targets[0]?.hash || '#intro';
+        for (const t of targets) {
+          const top = t.el.getBoundingClientRect().top;
+          if (top - y <= 0) current = t.hash;
+          else break;
+        }
+        if (current && location.hash !== current) history.replaceState(null, '', current);
+        setActive(current);
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('hashchange', () => {
+      setActive(location.hash || '#intro');
+    });
+    pickInitial();
+    onScroll();
+
+    // Tabs
+    document.querySelectorAll('[data-tabs]').forEach((tabs) => {
+      const buttons = Array.from(tabs.querySelectorAll('.tab-btn'));
+      const panels = Array.from(tabs.querySelectorAll('.tab-panel'));
+      function activate(key) {
+        buttons.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === key ? 'true' : 'false'));
+        panels.forEach(p => p.classList.toggle('active', p.dataset.panel === key));
+      }
+      buttons.forEach(b => b.addEventListener('click', () => activate(b.dataset.tab)));
+      const initial = buttons.find(b => b.getAttribute('aria-selected') === 'true')?.dataset.tab || buttons[0]?.dataset.tab;
+      if (initial) activate(initial);
+    });
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function highlightJson(text) {
+      const safe = escapeHtml(text);
+      return safe
+        .replace(/([{}\[\],:])/g, '<span class="tok-punc">$1</span>')
+        .replace(/\b(true|false)\b/g, '<span class="tok-bool">$1</span>')
+        .replace(/\bnull\b/g, '<span class="tok-null">null</span>')
+        .replace(/\b(-?\d+(?:\.\d+)?)\b/g, '<span class="tok-num">$1</span>')
+        .replace(/"([^"\\]*(?:\\.[^"\\]*)*)"(?=\s*:)/g, '"<span class="tok-key">$1</span>"')
+        .replace(/"([^"\\]*(?:\\.[^"\\]*)*)"/g, '"<span class="tok-str">$1</span>"');
+    }
+
+    function highlightHttp(text) {
+      const lines = text.replace(/\r\n/g, '\n').split('\n');
+      if (lines.length === 0) return escapeHtml(text);
+
+      const first = lines[0];
+      const m = first.match(/^(GET|POST|PUT|PATCH|DELETE)\s+([^\s]+)(.*)$/);
+      let out = '';
+      if (m) {
+        out += `<span class="tok-method">${m[1]}</span> <span class="tok-path">${escapeHtml(m[2])}</span>${escapeHtml(m[3] || '')}`;
+      } else {
+        out += escapeHtml(first);
+      }
+
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.trim() === '') {
+          out += '\n';
+          continue;
+        }
+        const hm = line.match(/^([A-Za-z\-]+):\s*(.*)$/);
+        if (hm) {
+          out += `\n<span class="tok-header">${escapeHtml(hm[1])}</span>: ${escapeHtml(hm[2])}`;
+        } else {
+          out += `\n${escapeHtml(line)}`;
+        }
+      }
+      return out;
+    }
+
+    document.querySelectorAll('pre code.json').forEach(code => {
+      code.innerHTML = highlightJson(code.textContent || '');
+    });
+
+    document.querySelectorAll('pre code.http').forEach(code => {
+      code.innerHTML = highlightHttp(code.textContent || '');
     });
   </script>
 </body>

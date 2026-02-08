@@ -54,35 +54,40 @@
           <p class="muted">Breve descripción del propósito del sistema y flujo principal.</p>
         </header>
 
-        <section class="panel">
-          <h2>Visión general</h2>
-          <p>Este sistema centraliza la creación, asignación, atención y cierre de solicitudes mediante un flujo controlado de tickets. Está diseñado para operar con perfiles diferenciados (clientes, agentes y administradores), mantener trazabilidad y acelerar la resolución con métricas y estados.</p>
-          <div class="badges">
-            <span class="badge"><span class="dot"></span>Roles: Cliente / Agente / Admin</span>
-            <span class="badge"><span class="dot"></span>Trazabilidad y auditoría</span>
-            <span class="badge"><span class="dot"></span>Asignación y priorización</span>
-            <span class="badge"><span class="dot"></span>Historial y comentarios</span>
-          </div>
-          <div class="callouts">
-            <div class="callout">
-              <h4>Qué resuelve</h4>
-              <p>Ordena la demanda de soporte, reduce tiempos de respuesta y hace visible el estado real de cada solicitud.</p>
+        <section class="hero">
+          <div class="hero-grid">
+            <div>
+              <h2>Visión general</h2>
+              <p>Sistema para registrar, asignar y resolver tickets con trazabilidad por roles.</p>
+              <div class="hero-actions">
+                <span class="pill"><span class="dot"></span>Cliente</span>
+                <span class="pill success"><span class="dot"></span>Agente</span>
+                <span class="pill warn"><span class="dot"></span>Administrador</span>
+                <span class="pill danger"><span class="dot"></span>Prioridad</span>
+              </div>
+
+              <div class="quick-grid">
+                <div class="quick">
+                  <div class="qtitle">Acceso <span class="label">Login</span></div>
+                  <p>Inicio de sesión y redirección por rol.</p>
+                </div>
+                <div class="quick">
+                  <div class="qtitle">Tickets <span class="label method get">GET</span></div>
+                  <p>Listado, filtros y detalle del ticket.</p>
+                </div>
+                <div class="quick">
+                  <div class="qtitle">Crear <span class="label method post">POST</span></div>
+                  <p>Registro de solicitud con categoría y prioridad.</p>
+                </div>
+              </div>
             </div>
-            <div class="callout">
-              <h4>Cómo opera</h4>
-              <p>Los clientes registran tickets; los agentes los atienden; el administrador define reglas, usuarios y reportes.</p>
+            <div class="hero-preview">
+              <img src="assets/Dashboard.png" alt="Dashboard" />
             </div>
-            <div class="callout">
-              <h4>Qué queda registrado</h4>
-              <p>Estados, responsables, prioridad, tiempos, comentarios, adjuntos y eventos relevantes.</p>
-            </div>
-          </div>
-          <div class="hero-preview">
-            <img src="assets/Dashboard.png" alt="Dashboard" />
           </div>
         </section>
 
-        <section id="objetivos" class="panel">
+        <section id="objetivos" class="panel accent-blue">
           <h2>Objetivos y Alcance</h2>
           <div class="two-col">
             <div class="card">
@@ -107,7 +112,7 @@
           </table>
         </section>
 
-        <section id="roles" class="panel">
+        <section id="roles" class="panel accent">
           <h2>Roles y permisos</h2>
           <p>Los permisos pueden variar por implementación. Esta matriz sirve como base para un control consistente.</p>
           <table>
@@ -122,7 +127,7 @@
           </table>
         </section>
 
-        <section id="flujos" class="panel">
+        <section id="flujos" class="panel accent-green">
           <h2>Flujos del sistema</h2>
           <div class="cards">
             <div class="card">
@@ -551,7 +556,7 @@ Response (201 Created):
           </table>
         </section>
 
-        <section id="api" class="panel">
+        <section id="api" class="panel accent-blue">
           <h2>API / Endpoints</h2>
           <p class="muted">Ejemplos compactos. Para capturas, usa <code>docs/assets/</code>.</p>
 
